@@ -4,8 +4,8 @@ const { login, logout, signup } = require('../controllers/auth.controller')
 
 const router=express.Router()
 
-router.get('/login',login)
-router.get('/logout',logout)
-router.get('/signup',signup)
+router.post('/login',login)
+router.post('/logout',logout)
+router.post('/signup',signup)
 
 module.exports=router
