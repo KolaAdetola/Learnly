@@ -9,6 +9,8 @@ app.get('/',(req,res)=>{
 })
 
 app.use ('/api/auth',authRoute)
+
+
 app.listen(port,()=>{
-    console.log(`server is running http://localhost:${port}/api/auth`)
+    console.log(`server is running http://localhost:${port}`)
 })
