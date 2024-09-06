@@ -1,5 +1,6 @@
 const User=require('../models/user.model')
 const bcrypt=require('bcryptjs')
+const generateToken = require('../utils/generateToken')
 const signup=async(req,res)=>{
     try {
         const {fullName,username,password,confirmPassword,gender } =req.body
@@ -45,20 +46,44 @@ const signup=async(req,res)=>{
             username,
             password:hashedPassword,
             gender,
-            profilePic:gender==='male'? boyProfilePic:girlProfilePic
+            profilePicture:gender==='male'? boyProfilePic : girlProfilePic
         })
-        await newUser.save()
-        res.status(201).json({message:'user created successfully'})
+        if (newUser) {
+            
+            
+            await newUser.save()
+            console.log(newUser.profilePicture)
+            
+            // Generate JWT token here
+            
+            generateToken(newUser._id,res)
+
+            res.status(201).json({
+            _id:newUser._id,
+            fullName:newUser.fullName,
+            username:newUser.username,
+            gender:newUser.gender,
+            profilePicture:newUser.profilePicture
+        })
+        // console.log(profilePicture)
+        } else {
+            res.status(400).json({message:'invalid user data'})
+        }
     } catch (error) {
         console.log(error.message)
         res.status(500).json({error:'internal server error'})
     }
 }
-const login=(req,res)=>{
-    console.log('login route')
-    res.send('login route')
+const login=async(req,res)=>{
+    try {
+       const {username,password}=req.body
+       const user=await User.findOne({username})
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error:'internal server error'})
+    }
 }
-const logout=(req,res)=>{
+const logout=async(req,res)=>{
     console.log('logout route')
     res.send('logout route')
 }
