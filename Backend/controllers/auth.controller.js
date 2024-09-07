@@ -78,6 +78,21 @@ const login=async(req,res)=>{
     try {
        const {username,password}=req.body
        const user=await User.findOne({username})
+       const isPasswordCorrect=await bycrypt.compare(password,user?.password || "")
+       if(!user){
+        return res.status(400).json({message:'user does not exist'})
+       }
+       if(!isPasswordCorrect){
+        return res.status(400).json({message:'incorrect password'})
+       }
+       generateToken(user._id,res)
+       res.status(200).json({
+        _id:user._id,
+        fullName:user.fullName,
+        username:user.username,
+        gender:user.gender,
+        profilePicture:user.profilePicture
+       })
     } catch (error) {
         console.log(error.message)
         res.status(500).json({error:'internal server error'})
