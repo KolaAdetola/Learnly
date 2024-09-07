@@ -2,6 +2,7 @@ const express=require('express')
 const port=2500
 const app=express()
 const authRoute=require('./routes/auth.routes')
+const messageRoute=require('./routes/message.routes')
 const connectdb=require('../Backend/db/db')
 connectdb()
 
@@ -11,6 +12,7 @@ app.get('/',(req,res)=>{
     res.send('<h1>hello world</h1>')
 })
 app.use ('/api/auth',authRoute)
+app.use ('/api/messages',messageRoute)
 
 
 
