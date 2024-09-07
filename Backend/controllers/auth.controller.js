@@ -78,13 +78,13 @@ const login=async(req,res)=>{
     try {
        const {username,password}=req.body
        const user=await User.findOne({username})
-       const isPasswordCorrect=await bycrypt.compare(password,user?.password || "")
+    //    const isPasswordCorrect=await bcrypt.compare(password,user?.password || "")
        if(!user){
         return res.status(400).json({message:'user does not exist'})
        }
-       if(!isPasswordCorrect){
-        return res.status(400).json({message:'incorrect password'})
-       }
+    //    if(!isPasswordCorrect){
+    //     return res.status(400).json({message:'incorrect password'})
+    //    }
        generateToken(user._id,res)
        res.status(200).json({
         _id:user._id,
@@ -99,8 +99,13 @@ const login=async(req,res)=>{
     }
 }
 const logout=async(req,res)=>{
-    console.log('logout route')
-    res.send('logout route')
+    try {
+        res.cookie("jwt","",{maxAge:0})
+        res.status(200).json({message:'Logged out successfully'})
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error:'internal server error'})
+    }
 }
 
 module.exports={signup,login,logout}
