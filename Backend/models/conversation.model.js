@@ -16,5 +16,5 @@ const conversationSchema= new mongoose.Schema({
     ],
 },{timestamps:true})
 
-const conversation=mongoose.model('conversation',conversationSchema)
-module.exports=conversation
+const Conversation=mongoose.model('conversation',conversationSchema)
+module.exports=Conversation
