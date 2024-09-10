@@ -3,6 +3,7 @@ const port=2500
 const app=express()
 const authRoute=require('./routes/auth.routes')
 const messageRoute=require('./routes/message.routes')
+const userRoutes=require('./routes/user.routes')
 const connectdb=require('../Backend/db/db')
 const cookieParser=require('cookie-parser')
 connectdb()
@@ -15,6 +16,7 @@ app.get('/',(req,res)=>{
 })
 app.use ('/api/auth',authRoute)
 app.use ('/api/messages',messageRoute)
+app.use ('/api/users',userRoutes)
 
 
 

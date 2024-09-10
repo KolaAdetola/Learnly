@@ -39,4 +39,38 @@ const sendMessage=async (req,res)=>{
 	}
 }
 
+const getMessages=async (req,res)=>{
+	try {
+        const { id: userToChatId } = req.params;
+		const senderId = req.user._id;
+
+		// const conversation = await Conversation.findOne({
+		// 	participants: { $all: [senderId, userToChatId] },
+		// }).populate("messages"); // NOT REFERENCE BUT ACTUAL MESSAGES
+
+		// if (!conversation) return res.status(200).json([]);
+
+		// const messages = conversation.messages;
+
+		// res.status(200).json(messages);
+        
+		const conversation = await Conversation.findOne({
+			participants: { $all: [senderId, userToChatId] },
+		}).populate("messages"); // NOT REFERENCE BUT ACTUAL MESSAGES
+
+		if(!conversation){
+			return res.status(202).json([]);
+		}
+
+		const messages=conversation.messages
+		.sort({ createdAt: -1 })
+		.map((message) => message.toObject());
+
+		res.status(200).json(messages);
+    } catch (error) {
+        console.log("Error in getMessages controller: ", error.message);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
+module.exports=getMessages
 module.exports=sendMessage
