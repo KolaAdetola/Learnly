@@ -10,6 +10,8 @@ export default {
         primary: '#6c2db4',
         secondary: '#f1c40f',
         danger: '#e74c3c',
+        light:'#359eff',
+        dark:'',
       },
     },
   },

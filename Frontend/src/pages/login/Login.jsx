@@ -34,13 +34,6 @@ const Login = () => {
               </button>
             </div>
             <p className="text-[#3E4D5B] text-sm font-normal leading-normal pb-3 pt-1 px-4 text-center">New to Learnly?</p>
-            <div className="flex px-4 py-3">
-              <button
-                className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 flex-1 bg-[#F0F2F5] text-[#141414] text-sm font-bold leading-normal tracking-[0.015em]"
-              >
-                <span className="truncate">Sign up</span>
-              </button>
-            </div>
             <p className="text-[#3E4D5B] text-sm font-normal leading-normal pb-3 pt-1 px-4 text-center">By continuing, you agree to our Terms of Service and Privacy Policy.</p>
           </div>
         </div>

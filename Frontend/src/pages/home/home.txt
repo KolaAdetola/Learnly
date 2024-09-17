@@ -1,0 +1,299 @@
+<div  style='font-family: Lexend, "Noto Sans", sans-serif;'>
+    <div class="layout-container flex h-full grow flex-col">
+        <div class="px-40 flex flex-1 justify-center py-5">
+            <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <div class="flex flex-wrap justify-between gap-3 p-4">
+                <p class="text-[#111517] tracking-light text-[32px] font-bold leading-tight min-w-72">Welcome to the platform</p>
+                </div>
+                <h2 class="text-[#111517] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Your courses</h2>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/3a78e001-147c-468d-826a-a1b9b84ffe1e.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Math 101</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">5 students · 4 classes</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/82a944cf-5b3b-46a1-8002-61102d78b5a7.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Science 101</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">2 students · 3 classes</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/5df4785e-c3aa-4d17-a423-0bbba59ec839.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Literature 101</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">4 students · 5 classes</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/9961c595-42a4-4a94-ace7-60d579422192.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">History 101</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">3 students · 4 classes</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/5ca13077-f10b-4475-b9aa-aab61ab3ca3b.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Art 101</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">6 students · 5 classes</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <h2 class="text-[#111517] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Upcoming classes</h2>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/a76c443b-bf3f-434e-bd76-975ca162247b.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Art 101 - Class 3</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">Today, 12:00 PM</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/dd93d993-d441-440b-82fb-bfa00170b8e3.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Math 101 - Class 5</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">Tomorrow, 1:00 PM</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/b4a67685-8edf-44f1-aeca-6532f5302fe3.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Science 101 - Class 3</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">May 12th, 3:00 PM</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/e2a6dd30-89ae-40eb-8b13-8741ac3c73b6.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">History 101 - Class 4</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">June 5th, 2:00 PM</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/e08689e9-c407-49e1-8444-1a7b1a067596.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Literature 101 - Class 3</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">July 10th, 4:00 PM</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <h2 class="text-[#111517] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Announcements</h2>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/f599d09a-116b-4c1f-aead-230f0ba99782.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Reminder: Math 101 - Class 5</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">May 1st</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/cfd2823e-a76a-4eb9-8d1b-4dff0c511cba.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Reminder: Science 101 - Class 3</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">April 25th</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/127b4234-40ed-4cab-bb13-a4d243f2423a.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Reminder: Literature 101 - Class 3</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">April 20th</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/0aba5870-3bb2-4293-b12a-d3687ac3640d.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Reminder: History 101 - Class 4</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">April 15th</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+                <div class="flex items-center gap-4 bg-white px-4 py-3 justify-between">
+                <div class="flex items-center gap-4">
+                    <div
+                    class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/dac4870a-7b85-44b5-8d2c-7821bcef91de.png");'
+                    ></div>
+                    <div class="flex flex-col justify-center">
+                    <p class="text-[#111517] text-base font-medium leading-normal line-clamp-1">Reminder: Art 101 - Class 3</p>
+                    <p class="text-[#647987] text-sm font-normal leading-normal line-clamp-2">April 10th</p>
+                    </div>
+                </div>
+                <div class="shrink-0">
+                    <div class="text-[#111517] flex size-7 items-center justify-center" data-icon="DotsThree" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm56-12a12,12,0,1,0,12,12A12,12,0,0,0,196,116ZM60,116a12,12,0,1,0,12,12A12,12,0,0,0,60,116Z"></path>
+                    </svg>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
