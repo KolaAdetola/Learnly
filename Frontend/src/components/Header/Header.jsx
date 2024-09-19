@@ -15,11 +15,12 @@ const Header = () => {
       </div>
       <nav className="flex items-center justify-between gap-4">
         <ul className="flex flex-row gap-2 [&>li>a]:text-black [&>li>a]:w-full [&>li>a]:h-8  [&>li>a]:p-2 [&>li>a]:rounded-md [&>li>a]:flex [&>li>a]:items-center [&>li>a]:justify-center [&>li>a]:text-sm [&>li>a]:font-medium ">
-          <li><Link to='/chat' className='hover:bg-slate-100 ' href="/home">Home</Link></li>
+          <li><Link to='/home' className='hover:bg-slate-100 ' href="/home">Home</Link></li>
           <li><Link to={'/'} className='hover:bg-slate-100 ' href="/courses">Courses</Link></li>
           <li><Link to={'/'} className='hover:bg-slate-100 ' href="/assignments">Assignments</Link></li>
           <li><Link to={'/'} className='hover:bg-slate-100 ' href="/grades">Grades</Link></li>
-          <li><Link to={'/chat'} className='hover:bg-slate-100 ' href="/resources">Resources</Link></li>
+          <li><Link to={'/chat'} className='hover:bg-slate-100 ' href="/grades">Chat</Link></li>
+          <li><Link to={'/'} className='hover:bg-slate-100 ' href="/resources">Resources</Link></li>
         </ul>
         <div className="size-8 hover:bg-slate-200 flex items-center justify-center rounded-md cursor-pointer">
           <RxHamburgerMenu className='text-black size-5'/>

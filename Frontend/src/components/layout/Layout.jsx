@@ -5,6 +5,7 @@ import Home from '../../pages/home/Home'
 import SignUp from '../../pages/signup/SignUp'
 import Login from '../../pages/login/Login'
 import Header from '../Header/Header'
+import Chat from '../Chat'
 
 const Layout = () => {
   return (
@@ -14,6 +15,7 @@ const Layout = () => {
       <Routes>
         <Route path="/" element={<SignUp/>}/>
         {/* <Route path="/signup" element={<SignUp/>}/> */}
+        <Route path="/chat" element={<Chat/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/login" element={<Login/>}/>
