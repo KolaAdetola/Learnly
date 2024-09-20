@@ -3,7 +3,7 @@ import React from "react";
 const Class = () => {
   return (
       <div className="flex items-center gap-4 flex-col  px-40 justify-between">
-        <div className="flex items-center gap-4  hover:bg-slate-200 rounded-md w-full px-4 py-3 justify-between">
+        <div className="flex items-center gap-4  hover:bg-slate-200 rounded-md w-full px-4 py-3 justify-between cursor-pointer">
           <div class="flex items-center gap-4">
             <div class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit" style={{backgroundImage: 'url("https://th.bing.com/th/id/R.060fdcd749da109e5c8c83c065db9245?rik=QSxLofKkrkofHA&pid=ImgRaw&r=0")'}}></div>
             <div class="flex flex-col justify-center">
@@ -19,7 +19,7 @@ const Class = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-4  hover:bg-slate-200 rounded-md w-full px-4 py-3 justify-between">
+        <div className="flex items-center gap-4  hover:bg-slate-200 rounded-md w-full px-4 py-3 justify-between cursor-pointer ">
           <div class="flex items-center gap-4">
             <div class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit" style={{backgroundImage: 'url("https://th.bing.com/th/id/R.79e3dfd5fc883298edf22168a094867f?rik=GmpRkLYfT0gJ0w&pid=ImgRaw&r=0")'}}></div>
             <div class="flex flex-col justify-center">
