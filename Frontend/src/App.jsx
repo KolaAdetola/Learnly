@@ -15,6 +15,7 @@ import Header from './components/Header/Header'
 import { BrowserRouter as Router,Routes,Route } from'react-router-dom'
 import HeaderA from './components/Header/HeaderA'
 import Layout from './components/layout/Layout'
+import Course from './components/Class/Course'
 
 function App() {
   return (
@@ -22,7 +23,6 @@ function App() {
     <Layout/>
     {/* <Home/> */}
       {/* <Header/> */}
-    
     
     {/* <Login/>
     <SignUp/>

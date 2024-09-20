@@ -1,5 +1,6 @@
 import React from 'react'
 import Class from '../../components/Class/Class'
+import Course from '../../components/Class/Course'
 
 const Home = () => {
   return (
@@ -9,7 +10,7 @@ const Home = () => {
           <h1 className="text-[#111517] tracking-light text-[32px] font-bold leading-tight min-w-72">Welcome to Learnly</h1>
           <p className="text-[#111517] text-[22px] font-bold leading-tight tracking-[-0.015em]  pb-3 pt-5">Your Courses</p>
         </div>
-        <Class/>
+        <Course/>
         <div className="px-40 flex flex-1 justify-center py-5 flex-col">
           <p className="text-[#111517] text-[22px] font-bold leading-tight tracking-[-0.015em]  pb-3 pt-5">Upcoming classes</p>
         </div>
