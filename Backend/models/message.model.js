@@ -16,10 +16,10 @@ const messageSchema= new mongoose.Schema({
         // required:true
     },
     createdAt:{
-        type:Date,
-        default:Date.now
+        type:String,
+        default: new Date().toISOString().slice(0,10)+' '+new Date().toLocaleTimeString()
     }
-},{timestamps:true})
+})
 
 const Message=mongoose.model('messages',messageSchema)
 module.exports=Message

@@ -14,7 +14,11 @@ const conversationSchema= new mongoose.Schema({
             default: [],
         },
     ],
-},{timestamps:true})
+    createdAt: {
+        type: String,
+        default: new Date().toISOString().slice(0, 10) + ' ' + new Date().toLocaleTimeString(),
+    },
+})
 
 const Conversation=mongoose.model('conversation',conversationSchema)
 module.exports=Conversation

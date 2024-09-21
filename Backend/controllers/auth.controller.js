@@ -3,7 +3,7 @@ const bcrypt=require('bcryptjs')
 const generateToken = require('../utils/generateToken')
 const signup=async(req,res)=>{
     try {
-        const {fullName,username,password,confirmPassword,gender } =req.body
+        const {fullName,username,password,confirmPassword,member,gender,createdAt } =req.body
         if(!fullName || !username || !password || !confirmPassword || !gender){
             return res.status(400).json({message:'please fill all the fields'})
         }
@@ -13,9 +13,6 @@ const signup=async(req,res)=>{
         const user=await User.findOne({username})
         if(user){
             return res.status(400).json({message:'user already exists'})
-        }
-        if(!['male','female','other'].includes(gender)){
-            return res.status(400).json({message:'invalid gender'})
         }
         if(password.length<6){
             return res.status(400).json({message:'password must be at least 6 characters'})
@@ -40,13 +37,25 @@ const signup=async(req,res)=>{
 
         const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`
         const girlProfilePic=`https://avatar.iran.liara.run/public/girl?username=${username}`
-
+        const now = new Date();
+        now.setHours(now.getHours() + 1);
+        const year = now.getFullYear();
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        console.log(formattedDateTime);
         const newUser=new User({
             fullName,
             username,
             password:hashedPassword,
+            createdAt: formattedDateTime,
+            confirmPassword,
+            member,
             gender,
-            profilePicture:gender==='male'? boyProfilePic : girlProfilePic
+            profilePicture:member==='student'? boyProfilePic : girlProfilePic
         })
         if (newUser) {
             
@@ -62,8 +71,13 @@ const signup=async(req,res)=>{
             _id:newUser._id,
             fullName:newUser.fullName,
             username:newUser.username,
+            member:newUser.member,
             gender:newUser.gender,
-            profilePicture:newUser.profilePicture
+            profilePicture:newUser.profilePicture,
+            createdAt:newUser.createdAt,
+            message:'user created successfully'
+
+
         })
         // console.log(profilePicture)
         } else {

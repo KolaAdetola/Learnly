@@ -15,17 +15,29 @@ const personSchema=new mongoose.Schema({
         required:true,
         minlength:6,
     },
+    confirmPassword:{
+        type:String,
+        // required:true,
+        minlength:6,
+    },
     gender:{
         type:String,
-        required:true,
+        // required:true,
         enum:['male','female','other']
+    },
+    member:{
+        type:String,
+        // required:true,
+        enum:['staff','student','admin']
     },
     profilePicture:{
         type:String,
         default:''
+    },
+    createdAt:{
+        type:String,
+        default: new Date().toISOString().slice(0,10)+' '+new Date().toLocaleTimeString()
     }
-},{
-    timestamps:true
 })
 
 const User=mongoose.model('user',personSchema)
