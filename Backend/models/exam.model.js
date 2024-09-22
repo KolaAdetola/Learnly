@@ -39,17 +39,17 @@ const QuestionSchema = new mongoose.Schema({
 });
 
 const ExamSchema = new mongoose.Schema({
-  title: { 
+  instructions: { 
     type: String,
-     required: true ,
-     unique: true,
-     
-     index: true,
-
-    },
+    required: true 
+},
   description: { 
     type: String 
 },
+  subjectCode: {
+    type: String,
+    required: true,
+  },
   questions: [QuestionSchema],
   duration: { 
     type: Number,
@@ -72,45 +72,3 @@ const Exam = mongoose.model("Exam", ExamSchema);
 const Question = mongoose.model("Question", QuestionSchema);
 
 module.exports = { Exam, Question };
-
-// const examSchema= new mongoose.Schema({
-//     course:{
-//         type:String,
-//         required:true
-//     },
-//     data:{
-//         type: JSON,
-//         required:true
-//     }
-//     // name: {
-//     //     type: String,
-//     //     required: true,
-//     // },
-//     // description: {
-//     //     type: String,
-//     //     required: true,
-//     // },
-//     // course: {
-//     //     type: mongoose.Schema.Types.ObjectId,
-//     //     ref: "Course",
-//     //     required: true,
-//     // },
-//     // questions: [
-//     //     {
-//     //         type: mongoose.Schema.Types.ObjectId,
-//     //         ref: "Question",
-//     //         required: true,
-//     //     },
-//     // ],
-//     // duration: {
-//     //     type: Number,
-//     //     required: true,
-//     // },
-//     // maxMarks: {
-//     //     type: Number,
-//     //     required: true,
-//     // },
-// },{timestamps:true})
-
-// const Exam=mongoose.model('exam',examSchema)
-// module.exports=Exam

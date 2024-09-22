@@ -18,6 +18,7 @@ const Header = () => {
           <li><Link to='/home' className='hover:bg-slate-100 ' href="/home">Home</Link></li>
           <li><Link to={'/'} className='hover:bg-slate-100 ' href="/courses">Courses</Link></li>
           <li><Link to={'/'} className='hover:bg-slate-100 ' href="/assignments">Assignments</Link></li>
+          <li><Link to={'/exams'} className='hover:bg-slate-100 ' href="/assignments">Exams</Link></li>
           <li><Link to={'/'} className='hover:bg-slate-100 ' href="/grades">Grades</Link></li>
           <li><Link to={'/chat'} className='hover:bg-slate-100 ' href="/grades">Chat</Link></li>
           <li><Link to={'/'} className='hover:bg-slate-100 ' href="/resources">Resources</Link></li>

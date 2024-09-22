@@ -6,6 +6,7 @@ import SignUp from '../../pages/signup/SignUp'
 import Login from '../../pages/login/Login'
 import Header from '../Header/Header'
 import Chat from '../Chat'
+import Exam from '../../pages/Exams/Exam'
 
 const Layout = () => {
   return (
@@ -18,7 +19,7 @@ const Layout = () => {
         <Route path="/chat" element={<Chat/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/exams" element={<Exam/>}/>
       </Routes>
     </Router>
     </>

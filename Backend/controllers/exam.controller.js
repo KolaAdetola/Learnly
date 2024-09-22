@@ -2,19 +2,20 @@ const { Exam } = require('../models/exam.model'); // Import the Exam model
 
 // Create a new exam (POST)
 const createExam = async (req, res) => {
-    const { title, description, questions, duration, totalMarks, createdBy } = req.body;
-    const exams=await Exam.findOne({title})
+    const { instructions, description, questions, duration, totalMarks, createdBy, subjectCode } = req.body;
+    const exams=await Exam.findOne({subjectCode })
         if(exams){
-            return res.status(400).json({message:'Question already exists'})
+            return res.status(400).json({message:'subject code already exists'})
         }
 
     const exam = new Exam({
-        title,
+        instructions,
         description,
         questions,
         duration,
         totalMarks,
-        createdBy
+        createdBy,
+        subjectCode
     });
 
     try {
