@@ -20,11 +20,6 @@ const personSchema=new mongoose.Schema({
         // required:true,
         minlength:6,
     },
-    gender:{
-        type:String,
-        // required:true,
-        enum:['male','female','other']
-    },
     member:{
         type:String,
         // required:true,

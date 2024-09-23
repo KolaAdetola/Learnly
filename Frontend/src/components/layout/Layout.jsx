@@ -14,10 +14,9 @@ const Layout = () => {
     <Router>
       <Header/>
       <Routes>
-        <Route path="/" element={<SignUp/>}/>
-        {/* <Route path="/signup" element={<SignUp/>}/> */}
+        <Route path="/" element={<Home/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
         <Route path="/chat" element={<Chat/>}/>
-        <Route path="/home" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/exams" element={<Exam/>}/>
       </Routes>

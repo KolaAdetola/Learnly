@@ -3,8 +3,8 @@ const bcrypt=require('bcryptjs')
 const generateToken = require('../utils/generateToken')
 const signup=async(req,res)=>{
     try {
-        const {fullName,username,password,confirmPassword,member,gender,createdAt } =req.body
-        if(!fullName || !username || !password || !confirmPassword || !gender){
+        const {fullName,username,password,confirmPassword,member,createdAt } =req.body
+        if(!fullName || !username || !password || !confirmPassword || !member){
             return res.status(400).json({message:'please fill all the fields'})
         }
         if(password !== confirmPassword){
@@ -54,7 +54,6 @@ const signup=async(req,res)=>{
             createdAt: formattedDateTime,
             confirmPassword,
             member,
-            gender,
             profilePicture:member==='student'? boyProfilePic : girlProfilePic
         })
         if (newUser) {
@@ -72,7 +71,6 @@ const signup=async(req,res)=>{
             fullName:newUser.fullName,
             username:newUser.username,
             member:newUser.member,
-            gender:newUser.gender,
             profilePicture:newUser.profilePicture,
             createdAt:newUser.createdAt,
             message:'user created successfully'
