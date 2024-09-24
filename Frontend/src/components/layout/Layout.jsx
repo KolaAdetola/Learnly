@@ -7,9 +7,11 @@ import Login from '../../pages/login/Login'
 import Header from '../Header/Header'
 import Chat from '../Chat'
 import Exam from '../../pages/Exams/Exam'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Layout = () => {
   return (
+    
     <>
     <Router>
       <Header/>
@@ -20,6 +22,7 @@ const Layout = () => {
         <Route path="/login" element={<Login/>}/>
         <Route path="/exams" element={<Exam/>}/>
       </Routes>
+      <Toaster/>
     </Router>
     </>
   )

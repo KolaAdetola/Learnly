@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Gender from './Gender'
+import useSignup from '../../hooks/useSignup'
 
 const SignUp = () => {
   const [inputs,setInputs]=useState({
@@ -10,13 +11,18 @@ const SignUp = () => {
     member: '',
 
   })
+  const {loading,signup}=useSignup()
+  if(loading){
+    return <div>Loading...</div>
+  }
 
   const handleCheckboxChange=(member)=>{
     setInputs({...inputs,member})
   }
 
-  const handleSubmit=(e)=>{
+  const handleSubmit=async(e)=>{
     e.preventDefault()
+    await signup(inputs)
   }
   return (
     <form class="px-40 bg-white flex flex-1 justify-center py-0" onSubmit={handleSubmit} >
