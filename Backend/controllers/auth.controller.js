@@ -3,40 +3,41 @@ const bcrypt=require('bcryptjs')
 const generateToken = require('../utils/generateToken')
 const signup=async(req,res)=>{
     try {
-        const {fullName,username,password,confirmPassword,member,createdAt } =req.body
-        if(!fullName || !username || !password || !confirmPassword || !member){
+        const {fullName,email,password,confirmPassword,member,createdAt } =req.body
+        if(!fullName || !email || !password || !confirmPassword || !member){
             return res.status(400).json({message:'please fill all the fields'})
         }
         if(password !== confirmPassword){
             return res.status(400).json({message:'password does not match'})
         }
-        const user=await User.findOne({username})
-        if(user){
-            return res.status(400).json({message:'user already exists'})
+        const userEmail=await User.findOne({email})
+        if(userEmail){
+            return res.status(400).json({message:'Email already exists'})
+        }
+        if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+            return res.status(400).json({message:'invalid email'})
         }
         if(password.length<6){
             return res.status(400).json({message:'password must be at least 6 characters'})
         }
-        if(username.length<6){
-            return res.status(400).json({message:'username must be at least 6 characters'})
-        }
+        // if(email.length<6){
+        //     return res.status(400).json({message:'username must be at least 6 characters'})
+        // }
         if(fullName.length<6){
             return res.status(400).json({message:'full name must be at least 6 characters'})
         }
         if(fullName.length>20){
             return res.status(400).json({message:'full name must be less than 20 characters'})
         }
-        if(username.length>20){
-            return res.status(400).json({message:'username must be less than 20 characters'})
-        }
+        
 
         //hash password
         //10 is the number of rounds to hash the password
         const salt=await bcrypt.genSalt(6)
         const hashedPassword=await bcrypt.hash(password,6)
 
-        const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`
-        const girlProfilePic=`https://avatar.iran.liara.run/public/girl?username=${username}`
+        const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${fullName}`
+        const girlProfilePic=`https://avatar.iran.liara.run/public/girl?username=${fullName}`
         const now = new Date();
         now.setHours(now.getHours() + 1);
         const year = now.getFullYear();
@@ -49,7 +50,7 @@ const signup=async(req,res)=>{
         console.log(formattedDateTime);
         const newUser=new User({
             fullName,
-            username,
+            email,
             password:hashedPassword,
             createdAt: formattedDateTime,
             confirmPassword,
@@ -69,7 +70,7 @@ const signup=async(req,res)=>{
             res.status(201).json({
             _id:newUser._id,
             fullName:newUser.fullName,
-            username:newUser.username,
+            email:newUser.email,
             member:newUser.member,
             profilePicture:newUser.profilePicture,
             createdAt:newUser.createdAt,
@@ -88,8 +89,8 @@ const signup=async(req,res)=>{
 }
 const login=async(req,res)=>{
     try {
-       const {username,password}=req.body
-       const user=await User.findOne({username})
+       const {email,password}=req.body
+       const user=await User.findOne({email})
     //    const isPasswordCorrect=await bcrypt.compare(password,user?.password || "")
        if(!user){
         return res.status(400).json({message:'user does not exist'})
@@ -101,7 +102,7 @@ const login=async(req,res)=>{
        res.status(200).json({
         _id:user._id,
         fullName:user.fullName,
-        username:user.username,
+        email:user.email,
         gender:user.gender,
         profilePicture:user.profilePicture
        })
