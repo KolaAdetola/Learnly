@@ -57,10 +57,10 @@ function handleInputErrors({
   confirmPassword,
   member,
 }) {
-  if (!fullName ) {
-  	toast.error("Please fill in all fields");
-  	return false;
-  }
+  // if (!email || !password || !confirmPassword || !member || !fullName ) {
+  // 	toast.error("Please fill in all fields");
+  // 	return false;
+  // }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     toast.error("Invalid email address");
@@ -76,6 +76,8 @@ function handleInputErrors({
     toast.error("Password must be at least 6 characters");
     return false;
   }
+
+  
 
   return true;
 }
