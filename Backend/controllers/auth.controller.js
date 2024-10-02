@@ -53,7 +53,6 @@ const signup=async(req,res)=>{
             email,
             password:hashedPassword,
             createdAt: formattedDateTime,
-            confirmPassword,
             member,
             profilePicture:member==='student'? boyProfilePic : girlProfilePic
         })

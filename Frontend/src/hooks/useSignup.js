@@ -57,10 +57,10 @@ function handleInputErrors({
   confirmPassword,
   member,
 }) {
-  // if (!email || !password || !confirmPassword || !member || !fullName ) {
-  // 	toast.error("Please fill in all fields");
-  // 	return false;
-  // }
+  if (!email || !password || !confirmPassword || !member || !fullName ) {
+  	toast.error("Please fill in all fields");
+  	return false;
+  }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     toast.error("Invalid email address");

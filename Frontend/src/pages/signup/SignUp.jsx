@@ -4,7 +4,7 @@ import useSignup from '../../hooks/useSignup'
 
 const SignUp = () => {
   const [inputs,setInputs]=useState({
-    firstName: '',
+    fullName: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -22,11 +22,12 @@ const SignUp = () => {
 
   const handleSubmit=async(e)=>{
     e.preventDefault()
+    console.log(inputs);
     await signup(inputs)
   }
   return (
     <form class="px-40 bg-white flex flex-1 justify-center py-0" onSubmit={handleSubmit} >
-      <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
+      <div class="layout-content-container flex flex-col w-[512px] py-5 max-w-[960px] flex-1">
         <h1 className="text-[#141414] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 text-left pb-3 pt-5">Welcome to Learnly</h1>
         <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
           <label class="flex flex-col min-w-40 flex-1">
@@ -34,8 +35,8 @@ const SignUp = () => {
             <input
               placeholder="First and last name"
               class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#141414] focus:outline-0 focus:ring-0 border border-[#e0e0e0] bg-white focus:border-[#e0e0e0] h-14 placeholder:text-[#757575] p-[15px] text-base font-normal leading-normal"
-              value={inputs.firstName}
-              onChange={(e)=>setInputs({...inputs,firstName:e.target.value})} 
+              value={inputs.fullName}
+              onChange={(e)=>setInputs({...inputs,fullName:e.target.value})} 
               type='text'
             />
           </label>
