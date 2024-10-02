@@ -16,11 +16,13 @@ import { BrowserRouter as Router,Routes,Route } from'react-router-dom'
 import HeaderA from './components/Header/HeaderA'
 import Layout from './components/layout/Layout'
 import Course from './components/Class/Course'
+import Loader from './components/loader/Loader'
 
 function App() {
   return (
     <>
     <Layout/>
+    {/* <Loader/> */}
     {/* <Home/> */}
       {/* <Header/> */}
     

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Gender from './Gender'
 import useSignup from '../../hooks/useSignup'
+import Loader from '../../components/loader/Loader'
 
 const SignUp = () => {
   const [inputs,setInputs]=useState({
@@ -13,7 +14,7 @@ const SignUp = () => {
   })
   const {loading,signup}=useSignup()
   if(loading){
-    return <div>Loading...</div>
+    return <Loader/>
   }
 
   const handleCheckboxChange=(member)=>{

@@ -2,6 +2,7 @@ const User=require('../models/user.model')
 const bcrypt=require('bcryptjs')
 const generateToken = require('../utils/generateToken')
 const signup=async(req,res)=>{
+    console.log("got here");
     try {
         const {fullName,email,password,confirmPassword,member,createdAt } =req.body
         if(!fullName || !email || !password || !confirmPassword || !member){
@@ -48,6 +49,7 @@ const signup=async(req,res)=>{
         const seconds = now.getSeconds().toString().padStart(2, '0');
         const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
         console.log(formattedDateTime);
+        console.log(fullName);
         const newUser=new User({
             fullName,
             email,
