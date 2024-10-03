@@ -17,8 +17,11 @@ import HeaderA from './components/Header/HeaderA'
 import Layout from './components/layout/Layout'
 import Course from './components/Class/Course'
 import Loader from './components/loader/Loader'
+import { useAuthContext } from './context/AuthContext'
 
 function App() {
+
+
   return (
     <>
     <Layout/>
