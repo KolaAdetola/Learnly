@@ -34,7 +34,7 @@ const PreExams = () => {
             <form action="">
               <div className="flex items-center justify-between ">
                 <label htmlFor="" className="text-[18px] font-bold text-gray-800">Name of student:</label>
-                <input type="text" name="" id="" className="bg-gray-100 text-gray-800 px-2 py-1 rounded-md outline-none w-full max-w-xs"/>
+                <input type="text" name="" id="" className="bg-gray-100 text-gray-800 text-[18px] font-semibold px-2 py-3 rounded-md outline-none w-full max-w-xs"/>
               </div>
             </form>
 

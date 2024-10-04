@@ -25,8 +25,8 @@ function App() {
 
   return (
     <>
-    {/* <Layout/> */}
-    <PreExams/>
+    <Layout/>
+    {/* <PreExams/> */}
     {/* <Loader/> */}
     {/* <Home/> */}
       {/* <Header/> */}
