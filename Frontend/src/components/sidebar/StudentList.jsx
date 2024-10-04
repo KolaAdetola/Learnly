@@ -4,7 +4,7 @@ import Student from './Student'
 const StudentList = () => {
   return (
     <>
-    <div className=' flex flex-col overflow-auto h-[90%] pt-2'>
+    <div className=' flex flex-col overflow-auto custom-scrollbar h-[90%] pt-2'>
       <Student/>
       <Student/>
       <Student/>

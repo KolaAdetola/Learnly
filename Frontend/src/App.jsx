@@ -18,13 +18,15 @@ import Layout from './components/layout/Layout'
 import Course from './components/Class/Course'
 import Loader from './components/loader/Loader'
 import { useAuthContext } from './context/AuthContext'
+import PreExams from './pages/preExams/PreExams'
 
 function App() {
 
 
   return (
     <>
-    <Layout/>
+    {/* <Layout/> */}
+    <PreExams/>
     {/* <Loader/> */}
     {/* <Home/> */}
       {/* <Header/> */}
