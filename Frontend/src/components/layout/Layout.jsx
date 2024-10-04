@@ -13,9 +13,6 @@ import { useAuthContext } from '../../context/AuthContext'
 const Layout = () => {
   const {authUser}=useAuthContext()
   console.log(authUser);
-  // if(!authUser){
-  //   return <Login/>
-  // }
   return (
     
     <>
