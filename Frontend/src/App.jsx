@@ -6,6 +6,7 @@ import Sendbar from './components/SendBar/Sendbar'
 import { RxHamburgerMenu } from "react-icons/rx";
 import Search from './components/sidebar/Search'
 import Sidebar from './components/sidebar/Sidebar'
+import True  from "./components/True/True";
 import StudentList from './components/sidebar/StudentList'
 import { CiChat2 } from "react-icons/ci";
 import Login from './pages/login/Login'
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+    {/* <True/> */}
     <Layout/>
     {/* <PreExams/> */}
     {/* <Loader/> */}
