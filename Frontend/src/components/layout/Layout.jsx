@@ -1,6 +1,6 @@
 import React from 'react'
 import HeaderA from '../Header/HeaderA'
-import { BrowserRouter as Router,Routes,Route } from'react-router-dom'
+import { BrowserRouter as Router,Routes,Route, Navigate } from'react-router-dom'
 import Home from '../../pages/home/Home'
 import SignUp from '../../pages/signup/SignUp'
 import Login from '../../pages/login/Login'
@@ -20,10 +20,10 @@ const Layout = () => {
     <Router>
       <Header/>
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/signup" element={authUser?<Home/>:<SignUp/>}/>
+        <Route path="/" element={authUser?<Home/>:<Navigate to="/login"/>}/>
+        <Route path="/signup" element={authUser?<Navigate to="/"/>:<SignUp/>}/>
         <Route path="/chat" element={<Chat/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={authUser?<Navigate to="/"/>:<Login/>}/>
         <Route path="/exams" element={<Exam/>}/>
         <Route path="/pre-exams" element={<PreExams/>}/>
       </Routes>

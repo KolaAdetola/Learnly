@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <>
     <div className="bg-white flex items-center justify-between whitespace-nowrap border-b  w-full h-14 px-10 py-3">
-      <Link to={'/'}
+      <Link to={'/'} 
         className="flex items-center gap-4 text-[#141414]">
         <div className="size-4">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path></svg>
