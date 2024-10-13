@@ -1,32 +1,35 @@
 import React, { useState } from 'react'
+import { useAuthContext } from '../context/AuthContext'
+import toast from 'react-hot-toast'
 
 const useLogout = () => {
     const [loading,setloading]=useState(false)
+    const {setAuthUser}=useAuthContext()
 
     const logout = async () => {
         try {
             const res= await fetch("api/auth/logout",{
                 method:"POST",
                 headers:{
-                    'Authorization':`Bearer ${localStorage.getItem('token')}`,
+                    'content-type':'application/json'
+                    // 'Authorization':`Bearer ${localStorage.getItem('token')}`,
                 },
             })
             const data=await res.json()
-            if(data.success){
-                localStorage.removeItem('token')
-                window.location.href="/"
+            if(data.error) {
+                throw new Error(data.error)
             }
-            if(data.error){
-                alert(data.error)
-            }
+            localStorage.removeItem('chat-user')
+            setAuthUser(null)
             
         } catch (error) {
-            
+            toast.error(error.message)
         }
         finally{
             setloading(false)
         }
     }
+    return { loading, logout }
 }
 
 export default useLogout

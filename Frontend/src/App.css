@@ -14,3 +14,16 @@
     90% {transform:translate(-35px);box-shadow:  15px  0 #F4DD51, 30px  0 #E3AAD6}
   }
 
+
+  /* HTML: <div class="loader"></div> */
+.loader1 {
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 30px;
+  animation: l1 1s linear infinite alternate;
+}
+.loader1:before {
+  content:"Loading..."
+}
+@keyframes l1 {to{opacity: 0}}
+
