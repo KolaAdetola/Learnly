@@ -11,9 +11,9 @@ const Logoutbutton = () => {
     >
       {!loading ? (
         <>
-          <Link to="/logout" className="block text-lg text-gray-700">
+          <div className="block text-lg text-gray-700">
             Logout
-          </Link>
+          </div>
           <div className="">
             <svg
               width="20px"

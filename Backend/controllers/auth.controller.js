@@ -92,7 +92,7 @@ const login=async(req,res)=>{
     try {
        const {email,password}=req.body
        const user=await User.findOne({email})
-    //    const isPasswordCorrect=await bcrypt.compare(password,user?.password || "")
+       const isPasswordCorrect=await bcrypt.compare(password,user?.password || "")
        if(!user){
         return res.status(400).json({message:'user does not exist'})
        }

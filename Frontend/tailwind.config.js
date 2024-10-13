@@ -17,7 +17,7 @@ export default {
 
           info: "#00a1bc",
 
-          success: "#00a400",
+          success: "#359EFF",
 
           warning: "#ffa000",
 

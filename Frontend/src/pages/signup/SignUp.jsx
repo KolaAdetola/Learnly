@@ -105,7 +105,7 @@ const SignUp = () => {
             className="btn w-[50%] btn-light bg-[#359eff] hover:bg-[#66b5ff] font-medium rounded-lg text-sm px-5 py-2.5 text-white text-base font-medium leading-normal"
             disabled={loading}
           >
-            {/* {loading ? <div className="loader1"></div> : "Sign Up"} */}
+            {loading ? <div className="loader1"></div> : "Sign Up"}
           </button>
         </div>
       </div>
