@@ -102,7 +102,7 @@ const SignUp = () => {
         />
         <div class="flex px-4 py-3">
           <button
-            className="btn w-[50%] btn-light bg-[#359eff] hover:bg-[#66b5ff] font-medium rounded-lg text-sm px-5 py-2.5 text-white text-base font-medium leading-normal"
+            className="btn w-[50%] btn-primary rounded-lg px-5 py-2.5 text-white text-base font-medium leading-normal"
             disabled={loading}
           >
             {loading ? <div className="loader1"></div> : "Sign Up"}
