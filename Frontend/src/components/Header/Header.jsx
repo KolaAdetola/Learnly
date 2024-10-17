@@ -104,30 +104,52 @@ const Header = () => {
             {/* Popover */}
             {showPopover && (
               <div
-                ref={popoverRef}
-                className="absolute top-12 right-0 w-[198px] bg-white shadow-lg rounded-lg p-4 z-50"
-              >
-                <ul className="flex flex-col space-y-2">
-                  <li>
-                    <Link
-                      to="/profile"
-                      className="block text-lg text-gray-700 hover:bg-gray-100 p-2 rounded"
-                    >
-                      Profile
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/settings"
-                      className="block text-lg text-gray-700 hover:bg-gray-100 p-2 rounded"
-                    >
-                      Settings
-                    </Link>
-                  </li>
-                  <div className="divider my-4 bg-gray-200 h-0.5"></div>
-                  <Logoutbutton/>
-                </ul>
+              ref={popoverRef}
+              className="flex border flex-col absolute top-14 right-0 h-[300px] bg-white w-[400px] shadow-lg shadow-gray-200 rounded-lg p-4 z-50"
+            >
+              {/* Profile Section */}
+              <div className="w-full bg-white flex flex-row items-center gap-4 py-2">
+                <div className="h-[70px] w-[70px] border rounded-full">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    alt="profile pic"
+                    className="h-full w-full rounded-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <h6 className="text-lg text-gray-800 font-medium">Kolawole Adetola</h6>
+                  <h6 className="text-md text-gray-500">
+                    Student &#128900; <span>Student ID</span>
+                  </h6>
+                </div>
               </div>
+            
+              {/* Divider */}
+              <div className="my-4 border-b border-gray-200"></div>
+            
+              {/* Menu Items */}
+              <ul className="flex flex-col space-y-2">
+                <li>
+                  <Link
+                    to="/profile"
+                    className="block text-lg text-gray-700 hover:bg-gray-100 p-2 rounded"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/settings"
+                    className="block text-lg text-gray-700 hover:bg-gray-100 p-2 rounded"
+                  >
+                    Settings
+                  </Link>
+                </li>
+                <li>
+                  <Logoutbutton  />
+                </li>
+              </ul>
+            </div>
             )}
           </div>
         </nav>
