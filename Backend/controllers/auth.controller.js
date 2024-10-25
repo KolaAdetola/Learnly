@@ -37,8 +37,8 @@ const signup=async(req,res)=>{
         const salt=await bcrypt.genSalt(6)
         const hashedPassword=await bcrypt.hash(password,6)
 
-        const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${fullName}`
-        const girlProfilePic=`https://avatar.iran.liara.run/public/girl?username=${fullName}`
+        const boyProfilePic=`https://avatar.iran.liara.run/public`
+        const girlProfilePic=`https://avatar.iran.liara.run/public`
         const now = new Date();
         now.setHours(now.getHours() + 1);
         const year = now.getFullYear();
