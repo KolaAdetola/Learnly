@@ -58,7 +58,7 @@ const Login = () => {
               type="submit" // Make sure it's a submit button
             >
               <span className="truncate">
-                {loading ? <div className="loader1"></div> : 'Login'}
+                {loading ? <div className="loading loading-spinner text-accent"></div> : 'Login'}
               </span>
             </button>
           </div>
