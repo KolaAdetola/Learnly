@@ -4,9 +4,11 @@ import Sendbar from '../SendBar/Sendbar';
 import { TiMessages } from "react-icons/ti";
 import useConversation from '../../zustand/useConversation';
 import { useAuthContext } from "../../context/AuthContext";
+import useGetMessage from '../../hooks/useGetMessage';
+import Messages from './Messages';
 
 const MessageContainer = () => {
-  const noChatSelected=false
+  
   const { selectedConversation, setSelectedConversation } = useConversation();
 
   useEffect(() => {
@@ -24,9 +26,7 @@ const MessageContainer = () => {
               <span className='text-gray-800 text-[20px]'>To: </span>
               <span className='text-gray-800 text-[20px]'>{selectedConversation?.fullName || "User"}</span>
             </div>
-            {[...Array(7)].map((_, index) => (
-              <Message key={index} />
-            ))}
+              <Messages />
           </div>
           <div className="w-full h-[10vh] flex justify-center items-center">
             <Sendbar />
