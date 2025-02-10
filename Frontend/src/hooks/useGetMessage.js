@@ -16,6 +16,7 @@ const useGetMessage = () => {
           throw new Error(data.message)
         }
         setMessages(data)
+        console.log(data);
       } catch (error) {
         toast.error(error.message)
       }finally{
