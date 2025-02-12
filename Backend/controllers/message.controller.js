@@ -53,7 +53,8 @@ const getMessages = async (req, res) => {
     try {
         const { id: userToChatId } = req.params;
         const senderId = req.user._id;
-
+        console.log("Message.find()");
+        
         const messages = await Message.find({
             $or: [
                 { senderId: senderId, receiverId: userToChatId },
@@ -72,5 +73,4 @@ const getMessages = async (req, res) => {
     }
 };
 
-module.exports=getMessages
-module.exports=sendMessage
+module.exports={getMessages, sendMessage}
