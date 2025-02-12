@@ -16,7 +16,6 @@ const HeaderA = () => {
           <li><Link to='/login' href="/home" className="hover:bg-slate-100 ">Log in</Link></li>
           <li><Link to='/signup' href="/home" className="hover:bg-slate-100 ">Sign up</Link></li>
           <li><Link to='/logout' href="/home" className="hover:bg-slate-100 ">Log Out</Link></li>
-          
         </ul>
       </nav>
     </div>
