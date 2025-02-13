@@ -2,9 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import Logoutbutton from "../logoutbtn/Logoutbutton";
+import { AuthContext, useAuthContext } from "../../context/AuthContext";
 
 const Header = () => {
   const [showPopover, setShowPopover] = useState(false);
+  const {authUser} = useAuthContext()
+  
   const popoverRef = useRef(null); // Reference to detect clicks outside
 
   // Toggle popover on avatar click
@@ -97,7 +100,7 @@ const Header = () => {
           >
             <div className="size-10 rounded-full">
               <img
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                src={authUser.profilePicture}
                 alt="Profile"
               />
             </div>
@@ -111,15 +114,15 @@ const Header = () => {
               <div className="w-full bg-white flex flex-row items-center gap-4 py-2">
                 <div className="h-[70px] w-[70px] border rounded-full">
                   <img
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={authUser.profilePicture}
                     alt="profile pic"
                     className="h-full w-full rounded-full object-cover"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <h6 className="text-lg text-gray-800 font-medium">Kolawole Adetola</h6>
-                  <h6 className="text-md text-gray-500">
-                    Student &#128900; <span>Student ID</span>
+                  <h6 className="text-lg text-gray-800 font-medium">{authUser.fullName}</h6>
+                  <h6 className="text-md text-gray-500 capitalize">
+                    {authUser.member} &#128900; <span>{authUser._id} </span>
                   </h6>
                 </div>
               </div>
