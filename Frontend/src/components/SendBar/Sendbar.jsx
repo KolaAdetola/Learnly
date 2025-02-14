@@ -8,10 +8,13 @@ const Sendbar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!message) return;
-    await sendMessage(message)
-    setMessage('')
+    console.log("Before sending message");
+    if (!message) return;
+    await sendMessage(message);
+    console.log("After sending message");
+    setMessage("");
   };
+  
   return (
     <form
       className="px-4 my-0 w-full flex items-center justify-between h-10"
@@ -30,7 +33,8 @@ const Sendbar = () => {
           ></textarea>
           <button
             className="btn btn-primary btn-sm cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#9436ff] text-[#f4effb] text-sm font-medium leading-normal "
-            type="submit"
+            type="button"
+            onClick={handleSubmit}
           >
             {loading ? <span className="loading loading-spinner loading-md text-accent"></span> : 'Send'}
             {/* Send */}
