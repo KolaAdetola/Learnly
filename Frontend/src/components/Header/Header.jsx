@@ -6,7 +6,7 @@ import { AuthContext, useAuthContext } from "../../context/AuthContext";
 
 const Header = () => {
   const [showPopover, setShowPopover] = useState(false);
-  const {authUser} = useAuthContext()
+  const { authUser } = useAuthContext();
   
   const popoverRef = useRef(null); // Reference to detect clicks outside
 
@@ -100,7 +100,7 @@ const Header = () => {
           >
             <div className="size-10 rounded-full">
               <img
-                src={authUser.profilePicture}
+                src={authUser ? authUser.profilePicture : 'https://placehold.co/40'}
                 alt="Profile"
               />
             </div>
@@ -149,7 +149,7 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Logoutbutton  />
+                  <Logoutbutton/>
                 </li>
               </ul>
             </div>
