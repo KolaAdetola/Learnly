@@ -8,10 +8,8 @@ const Sendbar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Before sending message");
     if (!message) return;
     await sendMessage(message);
-    console.log("After sending message");
     setMessage("");
   };
   

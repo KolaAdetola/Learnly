@@ -106,7 +106,6 @@ const signup = async (req, res) => {
         createdAt: newUser.createdAt,
         message: "user created successfully",
       });
-      // console.log(profilePicture)
     } else {
       res.status(400).json({ message: "invalid user data" });
     }

@@ -12,7 +12,6 @@ const Message = ({message}) => {
   const profilePic= isSender ? authUser.profilePicture : selectedConversation?.profilePicture
   const bubbleColor= isSender ? 'bg-[#9436ff] text-[#f4effb]' : 'bg-[#e7daf6] text-[#140821]'
   
-  console.log(authUser);
   
   
   return (
