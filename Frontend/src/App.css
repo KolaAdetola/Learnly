@@ -27,3 +27,15 @@
 }
 @keyframes l1 {to{opacity: 0}}
 
+#gradiense::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 96.5%;
+  height: 20px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0);
+  z-index: 1;
+  filter: blur(200px);
+  
+}
