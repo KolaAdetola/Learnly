@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { HiOutlineSearch } from "react-icons/hi";
-import useGetMessage from '../../hooks/useGetMessage';
+import { motion } from "framer-motion"; // Import Framer Motion
 import useConversation from '../../zustand/useConversation';
 import toast from 'react-hot-toast';
+import useGetConversations from '../../hooks/useGetConversation';
 
 const Search = () => {
   const [search, setSearch] = useState("");
   const [filteredConversations, setFilteredConversations] = useState([]);
   const { setSelectedConversation } = useConversation();
-  const { conversations } = useGetMessage(search);
+  const { conversations } = useGetConversations(search);
 
   useEffect(() => {
-    if (search.length >= 3) {
+    if (search.length >= 2) {
       const filtered = conversations.filter((conversation) =>
         conversation.fullName.toLowerCase().includes(search.toLowerCase())
       );
@@ -23,9 +24,6 @@ const Search = () => {
 
   const handleSearch = () => {
     if (!search) return;
-    // if (search.length < 3) {
-    //   return toast.error("Search query must be at least 3 characters long");
-    // }
 
     const conversation = conversations.filter((conversation) =>
       conversation.fullName.toLowerCase().includes(search.toLowerCase())
@@ -53,8 +51,8 @@ const Search = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="w-full h-12 rounded-md bg-[#e7daf6] flex items-center justify-center border-r-2">
-        <div className="text-[#6c2db4] flex border-none bg-[#e7daf6] items-center justify-center pl-4 rounded-l-lg border-r-0" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+      <form onSubmit={handleSubmit} className="rounded-md bg-[#e7daf6] flex items-center justify-center border-r-2">
+        <div className="text-[#6c2db4] flex border-none bg-[#e7daf6] items-center justify-center pl-4 rounded-l-lg border-r-0">
           <HiOutlineSearch size={24} />
         </div>
         <input
@@ -65,18 +63,37 @@ const Search = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </form>
+
       {filteredConversations.length > 0 && (
-        <ul className="absolute bg-white border border-gray-300 w-full mt-1 rounded-md shadow-lg z-10">
+        <motion.ul 
+          initial={{ opacity: 0, y: -10 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }} 
+          className="absolute bg-white border border-gray-300 w-[320px] mt-1 rounded-md shadow-xl z-[9999]"
+        >
           {filteredConversations.map((conversation) => (
             <li
               key={conversation.id}
-              className="p-2 hover:bg-gray-200 cursor-pointer"
+              className="p-2 hover:bg-gray-200 cursor-pointer w-full flex gap-2 items-center py-1 rounded"
               onClick={() => handleSelectConversation(conversation)}
             >
-              {conversation.fullName}
+              <div className="avatar online">
+                <div className="w-[50px] rounded-full">
+                  <img src={conversation.profilePicture} alt={`${conversation.fullName}'s profile`} />
+                </div>
+              </div>
+              <div className="flex flex-col flex-1">
+                <div className="flex gap-1 justify-between flex-col">
+                  <p className="whitespace-nowrap font-bold text-md text-gray-700">
+                    {conversation.fullName}
+                  </p>
+                  <p className="whitespace-nowrap text-xs text-gray-400">Last message</p>
+                </div>
+              </div>
             </li>
           ))}
-        </ul>
+        </motion.ul>
       )}
     </>
   );

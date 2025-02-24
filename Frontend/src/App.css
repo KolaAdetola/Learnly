@@ -1,4 +1,12 @@
 /* HTML: <div class="loader"></div> */
+body{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  height: 100vh;
+  background: #f0f0f0;
+  overflow: hidden;
+}
 .loader {
     width: 28px;
     aspect-ratio: 1;
