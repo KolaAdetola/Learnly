@@ -1,11 +1,16 @@
 import React from "react";
 import useConversation from "../../zustand/useConversation";
+import { useSocketContext } from "../../context/SocketContext";
 
 const Student = ({ conversation, lastIndex }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
+
   // Corrected to use `_id` consistently for comparison
   const isSelected = selectedConversation?._id === conversation._id;
+  const {onlineUsers} =useSocketContext();
+  const isOnline = onlineUsers.includes(conversation._id);
+  console.log(onlineUsers);
 
   return (
     <>
@@ -15,7 +20,7 @@ const Student = ({ conversation, lastIndex }) => {
         }`}
         onClick={() => setSelectedConversation(conversation)}
       >
-        <div className="avatar online">
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-[50px] rounded-full">
             <img src={conversation.profilePicture} alt={`${conversation.fullName}'s profile`} />
           </div>
