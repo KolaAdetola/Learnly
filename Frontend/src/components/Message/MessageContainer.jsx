@@ -23,8 +23,8 @@ const MessageContainer = () => {
       ) : (
         <>
           <div className='overflow-auto px-2 py-2 h-[79vh]'>
-            <div className="w-full px-4 py-2 mb-3 bg-gray-200 rounded-md ">
-              <span className='text-gray-800 text-[20px]'>To: </span>
+            <div className="w-full px-4 py-2 mb-3 bg-gray-200 rounded-md sticky top-[-5px] z-10 ">
+              <span className='text-gray-800 text-[20px]'>Chatting with: </span>
               <span className='text-gray-800 text-[20px]'>{selectedConversation?.fullName || "User"}</span>
             </div>
               <Messages />

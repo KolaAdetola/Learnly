@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import True from "../../components/True/True.jsx";
 
 const Exam = () => {
@@ -21,7 +22,7 @@ const Exam = () => {
   // Handles saving a question
   const handleSaveQuestion = () => {
     if (questionText.trim() === "") {
-      alert("Please enter a question before saving.");
+      toast.success("Please enter a question before saving.");
       return;
     }
 
@@ -36,7 +37,7 @@ const Exam = () => {
 
   return (
     <div className="layout-container flex h-screen grow flex-col bg-white">
-      <div className="px-40 flex flex-1 justify-center py-5 ">
+      <div className="px-40 flex flex-1 justify-center py-1 ">
         <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
 
           {/* Indicator for number of saved questions */}
@@ -142,7 +143,7 @@ const Exam = () => {
           {/* Bottom Buttons */}
           <div className="flex justify-between px-4 py-3">
             <div className="flex gap-2">
-              <button className="btn btn-accent text-[#141414] text-sm font-medium">
+              <button className="btn bg-gray-300 text-[#141414] text-sm font-medium">
                 Cancel
               </button>
               <button

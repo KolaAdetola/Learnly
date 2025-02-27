@@ -10,6 +10,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useAuthContext } from '../../context/AuthContext';
 import PreExams from '../../pages/preExams/PreExams';
 import Profile from '../../pages/Profile/Profile';
+import StudentExam from '../../pages/Exams/StudentExam';
 
 const Layout = () => {
   const { authUser } = useAuthContext(); // Get auth state
@@ -32,7 +33,7 @@ const Layout = () => {
           <Route path="/login" element={authUser ? <Navigate to="/" /> : <Login />} />
 
           {/* Exams Route: Protect this route */}
-          <Route path="/exams" element={authUser ? <Exam /> : <Navigate to="/login" />} />
+          <Route path="/exams" element={authUser ? <StudentExam /> : <Navigate to="/login" />} />
 
           {/* Pre-Exams Route: Protect this route */}
           <Route path="/pre-exams" element={authUser ? <PreExams /> : <Navigate to="/login" />} />
@@ -42,6 +43,7 @@ const Layout = () => {
 
           {/* Pre-Exams Route: Protect this route */}
           {/* <Route path="/settings" element={authUser ? <PreExams /> : <Navigate to="/login" />} /> */}
+          
 
         </Routes>
         <Toaster />

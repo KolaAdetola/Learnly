@@ -36,7 +36,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-white flex items-center justify-between whitespace-nowrap border-b w-full h-14 px-10 py-3">
+      <div className="bg-white flex items-center  top-[0px] z-10 sticky justify-between whitespace-nowrap border-b w-full h-14 px-10 py-3">
         <Link to={"/"} className="flex items-center gap-4 text-[#141414]">
           <div className="size-4">
             <svg
