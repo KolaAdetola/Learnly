@@ -19,7 +19,7 @@ export default {
 
           success: "#359EFF",
 
-          warning: "#ffa000",
+          warning: "#359eff",
 
           error: "#e2001e"
         },

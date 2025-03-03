@@ -11,6 +11,7 @@ import { useAuthContext } from '../../context/AuthContext';
 import PreExams from '../../pages/preExams/PreExams';
 import Profile from '../../pages/Profile/Profile';
 import StudentExam from '../../pages/Exams/StudentExam';
+import Test from '../../pages/Exams/Test';
 
 const Layout = () => {
   const { authUser } = useAuthContext(); // Get auth state
@@ -40,6 +41,8 @@ const Layout = () => {
 
           {/* Pre-Exams Route: Protect this route */}
           <Route path="/profile" element={authUser ? <Profile /> : <Navigate to="/login" />} />
+
+          <Route path="/teacher/exams" element={authUser ? <Test /> : <Navigate to="/login" />} />
 
           {/* Pre-Exams Route: Protect this route */}
           {/* <Route path="/settings" element={authUser ? <PreExams /> : <Navigate to="/login" />} /> */}

@@ -7,7 +7,7 @@ const StudentList = () => {
 
   console.table(conversations);
   if (loading)
-    return <span className="loading loading-spinner text-accent"></span>;
+    return <span className="absolute top-[50%] left-[10%] translate-x-[10%] translate-y-[50%] loading-dots loading w-[50px] text-accent"></span>;
   if (conversations.length === 0) return <div>No conversations</div>;
 
   return (

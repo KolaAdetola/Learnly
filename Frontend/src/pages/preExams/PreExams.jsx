@@ -1,15 +1,17 @@
 import React from "react";
+import { useAuthContext } from "../../context/AuthContext";
 
 const PreExams = () => {
+  const {authUser}=useAuthContext();
   return (
     <div>
-      <div className="layout-container flex h-full grow flex-col bg-white pb-8">
+      <div className="layout-container flex h-screen grow flex-col bg-white pb-8">
         <div className="flex flex-row justify-center gap-4 items-center px-5 py-8">
-          <div className="w-[50%]  p-5 border border-4 gap-3 border-[#9436ff] rounded-2xl ">
-            <h1 className="text-[25px] font-semibold text-gray-800 text-center ">Introduction to mathematics</h1>
+          <div className="w-[50%]  p-5 border-2 gap-3 border-[#9436ff] rounded-2xl ">
+            {/* <h1 className="text-[25px] font-semibold text-gray-800 text-center ">Introduction to mathematics</h1> */}
             <div className="flex items-center justify-between py-2">
               <h2 className="text-[20px] font-bold text-gray-800  text-start">Topic:</h2>
-              <h2 className="text-[20px] font-semibold text-gray-800  text-start">Simultaneous linear equations</h2>
+              <h2 className="text-[20px] font-semibold text-gray-800 underline text-start">Simultaneous linear equations</h2>
             </div>
             <div className="flex items-center justify-between gap-4 pt-5">
               <h2 className="text-xl font-bold text-gray-800 ">Duration:</h2>
@@ -31,20 +33,18 @@ const PreExams = () => {
                <h2 className="text-xl font-bold text-gray-800">Grade:</h2>
                <span className="text-[18px] font-semibold text-gray-800">Grade 11</span>
             </div>  
-            <form action="">
-              <div className="flex items-center justify-between ">
-                <label htmlFor="" className="text-[18px] font-bold text-gray-800">Name of student:</label>
-                <input type="text" name="" id="" className="bg-gray-100 text-gray-800 text-[18px] font-semibold px-2 py-3 rounded-md outline-none w-full max-w-xs"/>
-              </div>
-            </form>
+            <div className="flex items-center justify-between ">
+              <h2 className="text-xl font-bold text-gray-800">Time:</h2>
+              <span className="text-[18px] font-semibold text-gray-800">10:00am - 12:00pm</span>
+            </div>
 
           </div>
-          <div className="w-[50%] h-[500px]  p-5 border border-4 border-[#9436ff] rounded-2xl ">
+          <div className="w-[50%]   p-5 border-2 border-[#9436ff] rounded-2xl ">
             <div className="flex items-center justify-between gap-4 py-5 ">
               <h2 className="text-[25px] font-bold text-gray-800">Instructions</h2>
             </div>
-            <div className=" overflow-auto scroll-pb-2  h-[380px] ">
-              <li className="text-[16px] font-normal text-gray-800 text-start">Write name in full e.g <span className="font-bold">Kolawole Adetola</span> &#10004; <span className="font-bold">kola ,kwolz,kolawolz</span> &#x274c;.</li>
+            <div className=" overflow-auto scroll-pb-2   ">
+              <li className="text-[16px] font-normal text-gray-800 text-start">Write name in full e.g <span className="font-bold">{authUser.fullName}</span> &#10004; <span className="font-bold">kola ,kwolz,kolawolz</span> &#x274c;.</li>
               <li className="text-[16px] font-normal text-gray-800 text-start">Read questions carefully and respond with the correct answer.</li>
               <li className="text-[16px] font-normal text-gray-800 text-start">You are advised to spend 15 minutes on each question.</li>
               <li className="text-[16px] font-normal text-gray-800 text-start">Answer within the time limit.</li>
@@ -52,12 +52,6 @@ const PreExams = () => {
               <li className="text-[16px] font-normal text-gray-800 text-start">No looking at neighbour's work or answers.</li>
               <li className="text-[16px] font-normal text-gray-800 text-start">Do not use any calculator.</li>
               <li className="text-[16px] font-normal text-gray-800 text-start">Page will enter <span className="font-bold text-purple-500 hover:underline hover:text-purple-600 hover:cursor-pointer">LOCKDOWN MODE</span> for total duration of the exam minutes. </li>
-              {/* <li className="text-[16px] font-normal text-gray-800 text-start">Do not share your answers with anyone.</li>
-              <li className="text-[16px] font-normal text-gray-800 text-start">Do not use any internet or phone.</li>
-              <li className="text-[16px] font-normal text-gray-800 text-start">Do not use any other devices or software.</li>
-              <li className="text-[16px] font-normal text-gray-800 text-start">Do not use any electronic devices.</li>
-              <li className="text-[16px] font-normal text-gray-800 text-start">Do not communicate with you neighbour</li>
-              <li className="text-[16px] font-normal text-gray-800 text-start">Do not use any  external tablet or computer.</li> */}
             </div>
             
             

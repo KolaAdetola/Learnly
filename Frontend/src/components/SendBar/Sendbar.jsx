@@ -30,7 +30,7 @@ const Sendbar = () => {
           placeholder="Type a message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyDown} // 🔥 Detect Enter key
+          onKeyDown={handleKeyDown} 
         />
         <button
           className="btn btn-primary btn-sm cursor-pointer flex items-center justify-center rounded-lg h-8 px-4 bg-[#9436ff] text-[#f4effb] text-sm font-medium disabled:opacity-50"
