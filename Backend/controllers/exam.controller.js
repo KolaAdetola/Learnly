@@ -1,71 +1,57 @@
-const { Exam } = require('../models/exam.model'); // Import the Exam model
+const Exam = require("../models/exam.model");
 
-// Create a new exam (POST)
+// Create and Save a new Exam
+
 const createExam = async (req, res) => {
-    const { instructions, description, duration, totalMarks, createdBy, subjectCode } = req.body;
-    const exams=await Exam.findOne({subjectCode })
-        if(exams){
-            return res.status(400).json({message:'subject code already exists'})
-        }
-
-    const exam = new Exam({
-        instructions,
-        description,
-        duration,
-        totalMarks,
-        createdBy,
-        subjectCode
-    });
-
-    try {
-        const newExam = await exam.save();
-        res.status(201).json(newExam);  // Success
-    } catch (error) {
-        res.status(400).json({ message: error.message });  // Validation error or bad request
+  try {
+    const {
+      examName,
+    //   examDate,
+      examDuration,
+      examTotalMarks,
+      examPassingMarks,
+      examQuestions,
+    } = req.body;
+    if (
+      !examName ||
+    //   !examDate ||
+      !examDuration ||
+      !examTotalMarks ||
+      !examPassingMarks ||
+      !examQuestions
+    ) {
+      return res.status(400).json({ message: "please fill all the fields" });
     }
+    const now = new Date();
+    now.setHours(now.getHours() + 1);
+    const year = now.getFullYear();
+    const month = (now.getMonth() + 1).toString().padStart(2, "0");
+    const day = now.getDate().toString().padStart(2, "0");
+    const formattedDateTime = `${year}-${month}-${day}`;
+    const exam = new Exam({
+      examName,
+      examDate: formattedDateTime,
+      examDuration,
+      examTotalMarks,
+      examPassingMarks,
+      examQuestions,
+    });
+    await exam.save();
+    res.status(201).json({ message: "exam created successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: "internal server error" });
+  }
 };
 
-// Get all exams or a single exam by ID (GET)
 const getExams = async (req, res) => {
     try {
-        if (req.params.id) {
-            // Get a single exam by ID
-            const exam = await Exam.findById(req.params.id).populate('createdBy', 'name');
-            if (!exam) {
-                return res.status(404).json({ message: 'Exam not found' });
-            }
-            res.status(200).json(exam);
-        } else {
-            // Get all exams
-            const exams = await Exam.find().populate('createdBy', 'name');
-            res.status(200).json(exams);
-        }
+        const exam = await Exam.findOne({ examCode: req.params.examCode });
+        if (!exam) return res.status(404).json({ message: 'Exam not found' });
+        res.json(exam);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ error: error.message });
     }
-};
+}
 
-// Update an existing exam by ID (PUT)
-const updateExam = async (req, res) => {
-    const { title, description, questions, duration, totalMarks } = req.body;
-
-    try {
-        const updatedExam = await Exam.findByIdAndUpdate(req.params.id, {
-            title,
-            description,
-            questions,
-            duration,
-            totalMarks
-        }, { new: true });
-
-        if (!updatedExam) {
-            return res.status(404).json({ message: 'Exam not found' });
-        }
-        res.status(200).json(updatedExam);
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-};
-
-module.exports = { createExam, getExams, updateExam };
-
+module.exports = { createExam, getExams };

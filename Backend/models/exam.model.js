@@ -1,78 +1,57 @@
 const mongoose = require("mongoose");
 
-const QuestionSchema = new mongoose.Schema({
-  questionText: {
-    type: String,
-    required: true,
-  },
-  questionType: {
-    type: String,
-    enum: ["MCQ", "True/False", "Short Answer", "Fill in the Blank"],
-    required: true,
-  },
-  options: [
-    {
-      type: String,
+// Function to generate a unique 6-digit exam code
+const generateUniqueExamCode = async () => {
+    let code;
+    let exists = true;
+
+    while (exists) {
+        code = Math.floor(100000 + Math.random() * 900000); // Generates a 6-digit number
+        exists = await Exam.exists({ examCode: code }); // Check if code already exists
+    }
+    return code;
+};
+
+const examSchema = new mongoose.Schema({
+    examName: {
+        type: String,
+        required: true,
+        trim: true,
     },
-  ], // For MCQs
-  correctAnswer: {
-    type: String,
-    required: true,
-  },
-  difficulty: {
-    type: String,
-    enum: ["easy", "medium", "hard"],
-    default: "medium",
-  },
-  subject: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: { 
-    type: Date,
-    default: Date.now 
-},
+    examCode: { 
+        type: Number,
+        unique: true // Ensures no duplicates in MongoDB
+    },
+    examDate: {
+        type: Date,
+        required: true,
+        default: Date.now, // Stores current timestamp in UTC format
+    },
+    examDuration: {
+        type: Number,
+        required: true,
+    },
+    examTotalMarks: {
+        type: Number,
+        required: true,
+    },
+    examPassingMarks: {
+        type: Number,
+        required: true,
+    },
+    examQuestions: {
+        type: Array,
+        required: true,
+    },
 });
 
-const ExamSchema = new mongoose.Schema({
-  instructions: { 
-    type: String,
-    required: true 
-},
-  description: { 
-    type: String 
-},
-  subjectCode: {
-    type: String,
-    required: true,
-  },
-  subject: {
-    type: String,
-    required: true,
-  },
-  questions: [QuestionSchema],
-  duration: { 
-    type: Number,
-    required: true 
-}, // in minutes
-  totalMarks: { 
-    type: Number,
-    required: true 
-},
-  createdAt: { 
-    type: Date,
-    default: Date.now 
-},
-  createdBy: { 
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User" }, // Assuming a User model exists
+// Generate unique examCode before saving a new document
+examSchema.pre("save", async function (next) {
+    if (!this.examCode) {
+        this.examCode = await generateUniqueExamCode();
+    }
+    next();
 });
 
-const Exam = mongoose.model("Exam", ExamSchema);
-const Question = mongoose.model("Question", QuestionSchema);
-
-module.exports = { Exam, Question };
+const Exam = mongoose.model("Exam", examSchema);
+module.exports = Exam;
