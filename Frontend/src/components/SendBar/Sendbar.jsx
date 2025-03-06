@@ -38,7 +38,7 @@ const Sendbar = () => {
           disabled={loading}
         >
           {loading ? (
-            <span className="loading loading-spinner loading-md text-accent"></span>
+             <span className="loading loading-spinner loading-md text-accent"></span>
           ) : (
             "Send"
           )}

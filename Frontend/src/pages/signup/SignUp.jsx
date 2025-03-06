@@ -26,13 +26,10 @@ const SignUp = () => {
   };
   return (
     <form
-      class="px-40 bg-white flex flex-1 justify-center py-0"
+      class="px-40 bg-white h-[calc(100vh-56px)] flex flex-1 justify-center py-0"
       onSubmit={handleSubmit}
     >
       <div class="layout-content-container flex flex-col w-[512px] py-5 max-w-[960px] flex-1">
-        <h1 className="text-[#141414] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 text-left pb-3 pt-5">
-          Welcome to Learnly
-        </h1>
         <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
           <label class="flex flex-col min-w-40 flex-1">
             <p class="text-[#141414] text-base font-medium leading-normal pb-2">

@@ -16,7 +16,7 @@ const Login = () => {
   };
 
   return (
-    <div className="px-40 bg-white h-screen flex flex-1 justify-center py-5">
+    <div className="px-40 bg-white h-[calc(100vh-56px)] flex flex-1 justify-center py-5">
       <div className="layout-content-container flex flex-col w-[512px] py-5 max-w-[960px] flex-1">
         <h1 className="text-[#141414] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 text-left pb-3 pt-5">
           Welcome back to Learnly
