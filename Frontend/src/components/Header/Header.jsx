@@ -68,7 +68,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to={"/exams"}
+                to={"/pre-exams"}
                 className="hover:bg-slate-100"
                 href="/assignments"
               >

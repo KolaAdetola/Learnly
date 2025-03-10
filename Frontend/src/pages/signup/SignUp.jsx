@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Gender from "./Gender";
 import useSignup from "../../hooks/useSignup";
 import Loader from "../../components/loader/Loader";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -26,10 +27,10 @@ const SignUp = () => {
   };
   return (
     <form
-      class="px-40 bg-white h-[calc(100vh-56px)] flex flex-1 justify-center py-0"
+      class="px-40 bg-white h-[calc(100vh-60px)] flex flex-1 justify-center py-0"
       onSubmit={handleSubmit}
     >
-      <div class="layout-content-container flex flex-col w-[512px] py-5 max-w-[960px] flex-1">
+      <div class="layout-content-container flex flex-col w-[512px] py-2 max-w-[960px] flex-1">
         <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
           <label class="flex flex-col min-w-40 flex-1">
             <p class="text-[#141414] text-base font-medium leading-normal pb-2">
@@ -46,7 +47,7 @@ const SignUp = () => {
             />
           </label>
         </div>
-        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-2">
           <label class="flex flex-col min-w-40 flex-1">
             <p class="text-[#141414] text-base font-medium leading-normal pb-2">
               Email
@@ -60,7 +61,7 @@ const SignUp = () => {
             />
           </label>
         </div>
-        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-2">
           <label class="flex flex-col min-w-40 flex-1">
             <p class="text-[#141414] text-base font-medium leading-normal pb-2">
               Password
@@ -76,7 +77,7 @@ const SignUp = () => {
             />
           </label>
         </div>
-        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-2">
           <label class="flex flex-col min-w-40 flex-1">
             <p class="text-[#141414] text-base font-medium leading-normal pb-2">
               Confirm Password
@@ -96,13 +97,25 @@ const SignUp = () => {
           onCheckboxChange={handleCheckboxChange}
           selectedMember={inputs.member}
         />
-        <div class="flex px-4 py-3">
+        <div class="flex px-4 py-2 ">
           <button
-            className="btn w-[50%] btn-primary rounded-lg px-5 py-2.5 text-white text-base font-medium leading-normal"
+            className="btn w-[50%] btn-primary rounded-lg px-5 py-2 text-white text-base font-medium leading-normal"
             disabled={loading}
           >
             {loading ? <div className="loader1"></div> : "Sign Up"}
           </button>
+        </div>
+        <div className="">
+          <Link
+            to={"/login"}
+            className="text-[#3E4D5B] text-sm font-normal leading-normal pb-2 pt px-4 text-center hover:underline"
+          >
+            <p className="text-[#3E4D5B] text-sm font-normal leading-normal  px-4 text-center">
+             Already have an Account ?
+            </p>
+            {/* New to Learnly?
+             */}
+          </Link>
         </div>
       </div>
     </form>
