@@ -15,7 +15,7 @@ const StudentExam = () => {
   useEffect(() => {
     console.log("Exam Code:", examCode);
     console.log("Exam Data:", exam);
-    
+
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev === 1) {
@@ -67,7 +67,9 @@ const StudentExam = () => {
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+    return `${minutes.toString().padStart(2, "0")}:${secs
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   if (submitted) {
@@ -78,10 +80,14 @@ const StudentExam = () => {
         <ul className="mt-4 w-full max-w-lg text-left">
           {exam.examQuestions.map((q, index) => (
             <li key={index} className="mb-2 p-3 bg-gray-100 rounded-md">
-              <p className="font-medium">{index + 1}. {q.question}</p>
+              <p className="font-medium">
+                {index + 1}. {q.question}
+              </p>
               <p className="text-sm">
                 Your Answer:{" "}
-                <span className={answers[index] ? "text-green-600" : "text-red-600"}>
+                <span
+                  className={answers[index] ? "text-green-600" : "text-red-600"}
+                >
                   {answers[index] || "Not Answered"}
                 </span>
               </p>
@@ -99,17 +105,19 @@ const StudentExam = () => {
   }
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-white">
+    <div className="relative flex flex-col h-[calc(100vh-56px)] bg-white">
       {/* Timer */}
       <div className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-md">
         ⏳ {formatTime(timeLeft)}
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-gray-200 rounded-full h-3 mt-4 mx-4">
+      <div className=" bg-gray-200 rounded-full h-3 mt-4 mx-4">
         <div
           className="bg-blue-500 h-3 rounded-full"
-          style={{ width: `${(Object.keys(answers).length / totalQuestions) * 100}%` }}
+          style={{
+            width: `${(Object.keys(answers).length / totalQuestions) * 100}%`,
+          }}
         ></div>
       </div>
       <p className="text-center text-sm text-gray-600 mt-1">
@@ -178,23 +186,25 @@ const StudentExam = () => {
       </div>
 
       {/* Question Navigation Grid */}
-      <ul className="grid grid-cols-5 gap-4 p-4">
-        {exam.examQuestions.map((_, index) => (
-          <div
-            key={index}
-            className={`size-10 border rounded-md flex justify-center items-center cursor-pointer ${
-              index === currentQuestionIndex
-                ? "border-yellow-500 bg-yellow-100"
-                : answers[index]
-                ? "border-green-500 bg-green-100"
-                : "border-gray-300"
-            }`}
-            onClick={() => setCurrentQuestionIndex(index)}
-          >
-            {index + 1}
-          </div>
-        ))}
-      </ul>
+      <div className="w-[40%] relative  bottom-[10%]  mx-[30%] ">
+        <ul className="  right-[50%]  w-full grid grid-cols-5 gap-4 p-4">
+          {exam.examQuestions.map((_, index) => (
+            <div
+              key={index}
+              className={`size-10 border rounded-md flex justify-center items-center cursor-pointer ${
+                index === currentQuestionIndex
+                  ? "border-yellow-500 bg-yellow-100"
+                  : answers[index]
+                  ? "border-green-500 bg-green-100"
+                  : "border-gray-300"
+              }`}
+              onClick={() => setCurrentQuestionIndex(index)}
+            >
+              {index + 1}
+            </div>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
