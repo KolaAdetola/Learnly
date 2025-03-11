@@ -16,8 +16,6 @@ const examSchema = new mongoose.Schema({
   examQuestions: { type: [questionSchema], required: true },
 });
 
-const Exam = mongoose.model("Exam", examSchema);
-
 // Pre-save middleware to generate a unique 6-digit examCode before saving
 examSchema.pre("save", async function (next) {
   if (!this.examCode) {
@@ -26,12 +24,15 @@ examSchema.pre("save", async function (next) {
 
     while (exists) {
       code = Math.floor(100000 + Math.random() * 900000); // Generates a 6-digit number
-      exists = await Exam.exists({ examCode: code }); // Check if code already exists
+      exists = await mongoose.model("Exam").exists({ examCode: code }); // Check if code already exists
     }
 
     this.examCode = code;
   }
   next();
 });
+
+// Define the model *after* applying the pre-save middleware
+const Exam = mongoose.model("Exam", examSchema);
 
 module.exports = Exam;

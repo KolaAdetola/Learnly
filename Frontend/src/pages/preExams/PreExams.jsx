@@ -3,9 +3,11 @@ import { useAuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import useGetExam from "../../hooks/useGetExams";
 import toast from "react-hot-toast";
+import UseExamStore from "../../zustand/examStore";
 
 const PreExams = () => {
   const { authUser } = useAuthContext();
+  const {updateExamCode} = UseExamStore()
   const [examCode, setExamCode] = useState("");
   const [fetchCode, setFetchCode] = useState(null); // Stores the code when submitted
   const navigate = useNavigate();
@@ -23,6 +25,7 @@ const PreExams = () => {
 
   // Redirect when exam is successfully fetched
   if (exam) {
+    updateExamCode(examCode)
     navigate(`/exam/${examCode}`);
   }
 

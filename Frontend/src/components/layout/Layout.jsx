@@ -34,10 +34,12 @@ const Layout = () => {
           <Route path="/login" element={authUser ? <Navigate to="/" /> : <Login />} />
 
           {/* Exams Route: Protect this route */}
-          <Route path="/exam/:examcode" element={authUser ? <StudentExam /> : <Navigate to="/login" />} />
+          <Route path="/exam/:examCode" element={authUser ? <StudentExam /> : <Navigate to="/login" />} />
 
           {/* Pre-Exams Route: Protect this route */}
           <Route path="/pre-exams" element={ <PreExams /> } />
+
+          <Route path="/exam" element={authUser ? <Exam /> : <Navigate to="/login" />} />
 
           {/* Pre-Exams Route: Protect this route */}
           <Route path="/profile" element={authUser ? <Profile /> : <Navigate to="/login" />} />
