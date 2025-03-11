@@ -29,13 +29,18 @@ const StudentExam = () => {
     return () => clearInterval(timer);
   }, [examCode, exam]);
 
-  if (loading) return <p>Loading exam details...</p>;
+  if (loading) return;
+  <div className="w-full h-[calc(100vh-56px)] flex items-center justify-center flex-col  p-6">
+    <div className="loader2"></div>
+    <div className="text-xl mt-2">Loading Exam Details ....</div>
+  </div>;
   if (error) return <p>Error: {error}</p>;
   if (!exam || !exam.examQuestions || exam.examQuestions.length === 0)
     return <p>Exam not found or has no questions.</p>;
 
   const totalQuestions = exam.examQuestions.length;
   const currentQuestion = exam.examQuestions[currentQuestionIndex];
+  const examGrid = exam.examQuestions.length >= 10 ? "grid-cols-10" : "grid-cols-5";
 
   // Handle option selection
   const handleOptionChange = (questionIndex, selectedOption) => {
@@ -108,6 +113,7 @@ const StudentExam = () => {
     <div className="relative flex flex-col h-[calc(100vh-56px)] bg-white">
       {/* Timer */}
       <div className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-md">
+        
         ⏳ {formatTime(timeLeft)}
       </div>
 
@@ -187,7 +193,7 @@ const StudentExam = () => {
 
       {/* Question Navigation Grid */}
       <div className="w-[40%] relative  bottom-[10%]  mx-[30%] ">
-        <ul className="  right-[50%]  w-full grid grid-cols-5 gap-4 p-4">
+        <ul className={`  right-[50%]  w-full grid ${examGrid} gap-4 p-4`}>
           {exam.examQuestions.map((_, index) => (
             <div
               key={index}

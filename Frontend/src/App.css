@@ -35,4 +35,14 @@ body{
 }
 @keyframes l1 {to{opacity: 0}}
 
+/* HTML: <div class="loader"></div> */
+.loader2 {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid lightblue;
+  border-right-color: #3498db;
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 {to{transform: rotate(1turn)}}
 
