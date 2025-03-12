@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useGetExam from "../../hooks/useGetExams";
+import Swal from "sweetalert2";
 
 const StudentExam = () => {
   const { examCode } = useParams();
@@ -10,7 +11,13 @@ const StudentExam = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes in seconds
+  const [timeLeft, setTimeLeft] = useState(null); // 15 minutes in seconds
+
+  useEffect(() => {
+    if (exam?.examDuration) {
+      setTimeLeft(exam.examDuration * 60); // Convert minutes to seconds
+    }
+  }, [exam]);
 
   useEffect(() => {
     console.log("Exam Code:", examCode);
@@ -40,14 +47,32 @@ const StudentExam = () => {
 
   const totalQuestions = exam.examQuestions.length;
   const currentQuestion = exam.examQuestions[currentQuestionIndex];
-  const examGrid = exam.examQuestions.length >= 10 ? "grid-cols-10" : "grid-cols-5";
+  const examGrid =
+    exam.examQuestions.length >= 10 ? "grid-cols-10" : "grid-cols-5";
 
   // Handle option selection
   const handleOptionChange = (questionIndex, selectedOption) => {
-    setAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [questionIndex]: selectedOption,
-    }));
+    setAnswers((prevAnswers) => {
+      const updatedAnswers = {
+        ...prevAnswers,
+        [questionIndex]: selectedOption,
+      };
+
+      console.log("Updated answers:", updatedAnswers);
+      console.log(
+        "Correct answer:",
+        exam.examQuestions[questionIndex].correctAnswer
+      );
+
+      // Compare selectedOption directly with the correct answer
+      if (selectedOption === exam.examQuestions[questionIndex].correctAnswer) {
+        console.log("Correct Answer!");
+      } else {
+        console.log("Wrong Answer!");
+      }
+
+      return updatedAnswers;
+    });
   };
 
   // Navigate through questions
@@ -66,6 +91,11 @@ const StudentExam = () => {
   // Submit exam
   const handleSubmit = () => {
     setSubmitted(true);
+    Swal.fire({
+      title: "Good job!",
+      text: "You have Successfully submitted your exam!",
+      icon: "success",
+    });
   };
 
   // Convert seconds to MM:SS format
@@ -83,25 +113,34 @@ const StudentExam = () => {
         <h2 className="text-2xl font-bold mb-4">Exam Submitted! ✅</h2>
         <p className="text-gray-700">Here are your answers:</p>
         <ul className="mt-4 w-full max-w-lg text-left">
-          {exam.examQuestions.map((q, index) => (
-            <li key={index} className="mb-2 p-3 bg-gray-100 rounded-md">
-              <p className="font-medium">
-                {index + 1}. {q.question}
-              </p>
-              <p className="text-sm">
-                Your Answer:{" "}
-                <span
-                  className={answers[index] ? "text-green-600" : "text-red-600"}
-                >
-                  {answers[index] || "Not Answered"}
-                </span>
-              </p>
-            </li>
-          ))}
+          {exam.examQuestions.map((q, index) => {
+            const userAnswer = answers[index]; // User's selected answer
+            const isCorrect = userAnswer === q.correctAnswer; // Compare with correct answer
+
+            return (
+              <li key={index} className="mb-2 p-3 bg-gray-100 rounded-md">
+                <p className="font-medium">
+                  {index + 1}. {q.question}
+                </p>
+                <p className="text-sm">
+                  Your Answer:{" "}
+                  <span
+                    className={isCorrect ? "text-green-600" : "text-red-600"}
+                  >
+                    {userAnswer || "Not Answered"}
+                  </span>
+                </p>
+                <p className="text-sm">
+                  Correct Answer:{" "}
+                  <span className="text-green-600">{q.correctAnswer}</span>
+                </p>
+              </li>
+            );
+          })}
         </ul>
         <button
           className="mt-4 bg-blue-500 text-white px-6 py-2 rounded-md"
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate("/")}
         >
           Go to Dashboard
         </button>
@@ -112,9 +151,32 @@ const StudentExam = () => {
   return (
     <div className="relative flex flex-col h-[calc(100vh-56px)] bg-white">
       {/* Timer */}
-      <div className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-md">
-        
-        ⏳ {formatTime(timeLeft)}
+      <div className="absolute top-8 right-4 bg-gray-800 text-white px-4 py-2 rounded-md">
+        <span className="countdown font-mono text-2xl">
+          <span
+            style={{ "--value": Math.floor(timeLeft / 3600) }}
+            aria-live="polite"
+            aria-label={timeLeft}
+          >
+            {Math.floor(timeLeft / 3600)}
+          </span>
+          :
+          <span
+            style={{ "--value": Math.floor((timeLeft % 3600) / 60) }}
+            aria-live="polite"
+            aria-label={timeLeft}
+          >
+            {Math.floor((timeLeft % 3600) / 60)}
+          </span>
+          :
+          <span
+            style={{ "--value": timeLeft % 60 }}
+            aria-live="polite"
+            aria-label={timeLeft}
+          >
+            {timeLeft % 60}
+          </span>
+        </span>
       </div>
 
       {/* Progress Bar */}
