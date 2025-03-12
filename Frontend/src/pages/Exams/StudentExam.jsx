@@ -18,50 +18,6 @@ const StudentExam = () => {
       setTimeLeft(exam.examDuration * 60); // Convert minutes to seconds
     }
   }, [exam]);
-  useEffect(() => {
-    const enterFullScreen = () => {
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      } else if (document.documentElement.mozRequestFullScreen) {
-        document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) {
-        document.documentElement.msRequestFullscreen();
-      }
-    };
-
-    enterFullScreen();
-
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        Swal.fire({
-          title: "Suspicious Activity Detected!",
-          text: "You switched tabs or minimized the window.",
-          icon: "warning",
-        });
-
-      }
-    };
-
-    const handleFullscreenChange = () => {
-      if (!document.fullscreenElement) {
-        Swal.fire({
-          title: "Suspicious Activity Detected!",
-          text: "You exited full-screen mode.",
-          icon: "warning",
-        });
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
-
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
-    };
-  }, []);
 
   useEffect(() => {
     console.log("Exam Code:", examCode);
