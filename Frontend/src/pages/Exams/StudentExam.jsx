@@ -18,6 +18,50 @@ const StudentExam = () => {
       setTimeLeft(exam.examDuration * 60); // Convert minutes to seconds
     }
   }, [exam]);
+  useEffect(() => {
+    const enterFullScreen = () => {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) {
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) {
+        document.documentElement.msRequestFullscreen();
+      }
+    };
+
+    enterFullScreen();
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        Swal.fire({
+          title: "Suspicious Activity Detected!",
+          text: "You switched tabs or minimized the window.",
+          icon: "warning",
+        });
+
+      }
+    };
+
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        Swal.fire({
+          title: "Suspicious Activity Detected!",
+          text: "You exited full-screen mode.",
+          icon: "warning",
+        });
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
 
   useEffect(() => {
     console.log("Exam Code:", examCode);
@@ -151,8 +195,8 @@ const StudentExam = () => {
   return (
     <div className="relative flex flex-col h-[calc(100vh-56px)] bg-white">
       {/* Timer */}
-      <div className="absolute top-8 right-4 bg-gray-800 text-white px-4 py-2 rounded-md">
-        <span className="countdown font-mono text-2xl">
+      <div className="absolute top-16 right-[50%] translate-x-[50%] bg-gray-800 text-white px-4 py-2 rounded-md">
+        <span className="countdown font-mono text-5xl">
           <span
             style={{ "--value": Math.floor(timeLeft / 3600) }}
             aria-live="polite"
@@ -193,85 +237,89 @@ const StudentExam = () => {
       </p>
 
       {/* Question Progress */}
-      <h3 className="text-lg font-bold px-4 pb-2 pt-2">
-        Question {currentQuestionIndex + 1} of {totalQuestions}
-      </h3>
+      <div className="mt-12 ">
+        <h3 className="text-lg font-bold px-4 pb-2 pt-2">
+          Question {currentQuestionIndex + 1} of {totalQuestions}
+        </h3>
 
-      {/* Display Question */}
-      <p className="text-base font-normal pb-3 pt-1 px-4">
-        {currentQuestion?.question || "No question available"}
-      </p>
+        {/* Display Question */}
+        <p className="text-base font-normal pb-3 pt-1 px-4">
+          {currentQuestion?.question || "No question available"}
+        </p>
 
-      {/* Answer Options */}
-      <div className="flex flex-col gap-3 p-4">
-        {currentQuestion?.options?.map((option, index) => (
-          <label
-            key={index}
-            className={`flex items-center gap-4 rounded-xl border p-[15px] cursor-pointer ${
-              answers[currentQuestionIndex] === option
-                ? "bg-blue-100 border-blue-500"
-                : "border-gray-300"
-            }`}
-          >
-            <input
-              type="radio"
-              name={`question-${currentQuestionIndex}`}
-              value={option}
-              checked={answers[currentQuestionIndex] === option}
-              onChange={() => handleOptionChange(currentQuestionIndex, option)}
-            />
-            <div className="flex grow flex-col">
-              <p className="text-sm font-medium">{option}</p>
-            </div>
-          </label>
-        ))}
-      </div>
-
-      {/* Navigation & Submit Buttons */}
-      <div className="flex justify-between px-4 py-4">
-        <button
-          className="bg-gray-300 px-4 py-2 rounded-md"
-          onClick={handlePreviousQuestion}
-          disabled={currentQuestionIndex === 0}
-        >
-          ← Previous
-        </button>
-        {currentQuestionIndex === totalQuestions - 1 ? (
-          <button
-            className="bg-red-500 text-white px-6 py-2 rounded-md"
-            onClick={handleSubmit}
-          >
-            Submit Exam
-          </button>
-        ) : (
-          <button
-            className="bg-blue-500 text-white px-6 py-2 rounded-md"
-            onClick={handleNextQuestion}
-          >
-            Next →
-          </button>
-        )}
-      </div>
-
-      {/* Question Navigation Grid */}
-      <div className="w-[40%] relative  bottom-[10%]  mx-[30%] ">
-        <ul className={`  right-[50%]  w-full grid ${examGrid} gap-4 p-4`}>
-          {exam.examQuestions.map((_, index) => (
-            <div
+        {/* Answer Options */}
+        <div className="flex flex-col gap-3 p-4">
+          {currentQuestion?.options?.map((option, index) => (
+            <label
               key={index}
-              className={`size-10 border rounded-md flex justify-center items-center cursor-pointer ${
-                index === currentQuestionIndex
-                  ? "border-yellow-500 bg-yellow-100"
-                  : answers[index]
-                  ? "border-green-500 bg-green-100"
+              className={`flex items-center gap-4 rounded-xl border p-[15px] cursor-pointer ${
+                answers[currentQuestionIndex] === option
+                  ? "bg-blue-100 border-blue-500"
                   : "border-gray-300"
               }`}
-              onClick={() => setCurrentQuestionIndex(index)}
             >
-              {index + 1}
-            </div>
+              <input
+                type="radio"
+                name={`question-${currentQuestionIndex}`}
+                value={option}
+                checked={answers[currentQuestionIndex] === option}
+                onChange={() =>
+                  handleOptionChange(currentQuestionIndex, option)
+                }
+              />
+              <div className="flex grow flex-col">
+                <p className="text-sm font-medium">{option}</p>
+              </div>
+            </label>
           ))}
-        </ul>
+        </div>
+
+        {/* Navigation & Submit Buttons */}
+        <div className="flex justify-between px-4 py-4">
+          <button
+            className="bg-gray-300 px-4 py-2 rounded-md"
+            onClick={handlePreviousQuestion}
+            disabled={currentQuestionIndex === 0}
+          >
+            ← Previous
+          </button>
+          {currentQuestionIndex === totalQuestions - 1 ? (
+            <button
+              className="bg-red-500 text-white px-6 py-2 rounded-md"
+              onClick={handleSubmit}
+            >
+              Submit Exam
+            </button>
+          ) : (
+            <button
+              className="bg-blue-500 text-white px-6 py-2 rounded-md"
+              onClick={handleNextQuestion}
+            >
+              Next →
+            </button>
+          )}
+        </div>
+
+        {/* Question Navigation Grid */}
+        <div className="w-[40%] relative  bottom-[10%]  mx-[30%] ">
+          <ul className={`  right-[50%]  w-full grid ${examGrid} gap-4 p-4`}>
+            {exam.examQuestions.map((_, index) => (
+              <div
+                key={index}
+                className={`size-10 border rounded-md flex justify-center items-center cursor-pointer ${
+                  index === currentQuestionIndex
+                    ? "border-yellow-500 bg-yellow-100"
+                    : answers[index]
+                    ? "border-green-500 bg-green-100"
+                    : "border-gray-300"
+                }`}
+                onClick={() => setCurrentQuestionIndex(index)}
+              >
+                {index + 1}
+              </div>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
