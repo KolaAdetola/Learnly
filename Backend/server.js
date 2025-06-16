@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import authRoute from './routes/auth.routes.js';
@@ -9,6 +10,8 @@ import connectdb from './db/db.js'; // Adjusted path for ESM context
 const app = express();
 const port = 2500;
 
+const __dirname = path.resolve();
+
 // Connect to database
 connectdb();
 
@@ -17,13 +20,19 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-app.get('/', (req, res) => {
-  res.send('<h1>hello world</h1>');
-});
+// app.get('/', (req, res) => {
+//   res.send('<h1>hello world</h1>');
+// });
 app.use('/api/auth', authRoute);
 app.use('/api/messages', messageRoute);
 app.use('/api/users', userRoutes);
 app.use('/api/exams', examRoutes);
+
+app.use(express.static(path.join(__dirname, '/Frontend/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+});
 
 // Start server
 app.listen(port, () => {
