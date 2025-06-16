@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const questionSchema = new mongoose.Schema({
   question: { type: String, required: true },
@@ -35,4 +35,4 @@ examSchema.pre("save", async function (next) {
 // Define the model *after* applying the pre-save middleware
 const Exam = mongoose.model("Exam", examSchema);
 
-module.exports = Exam;
+export default Exam;

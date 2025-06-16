@@ -1,10 +1,10 @@
-const User = require("../models/user.model");
-const bcrypt = require("bcryptjs");
-const generateToken = require("../utils/generateToken");
+import User from "../models/user.model.js";
+import bcrypt from "bcryptjs";
+import generateToken from "../utils/generateToken.js";
+
 const signup = async (req, res) => {
   try {
-    const { fullName, email, password, confirmPassword, member, createdAt } =
-      req.body;
+    const { fullName, email, password, confirmPassword, member, createdAt } = req.body;
     if (!fullName || !email || !password || !confirmPassword || !member) {
       return res.status(400).json({ message: "please fill all the fields" });
     }
@@ -23,9 +23,6 @@ const signup = async (req, res) => {
         .status(400)
         .json({ message: "password must be at least 6 characters" });
     }
-    // if(email.length<6){
-    //     return res.status(400).json({message:'username must be at least 6 characters'})
-    // }
     if (fullName.length < 6) {
       return res
         .status(400)
@@ -36,6 +33,7 @@ const signup = async (req, res) => {
         .status(400)
         .json({ message: "full name must be less than 20 characters" });
     }
+
     function splitFullName(fullName) {
       const nameParts = fullName.trim().split(" ");
       const firstName = nameParts[0];
@@ -46,33 +44,33 @@ const signup = async (req, res) => {
         lastName,
       };
     }
+
     const { firstName, lastName } = splitFullName(fullName);
 
-    //hash password
-    //10 is the number of rounds to hash the password
     const salt = await bcrypt.genSalt(6);
     const hashedPassword = await bcrypt.hash(password, 6);
-    const adminColor = ["F0E4FA", "F8F1FD", "FCFAFE", "F4EFFB", "FBF8FE","BFA2D9", "A484C3", "8A69AC", "CBB6E0", "A993C6"] ;
-    const staffColor = ["A855FF", "C080FF", "D9AAFF", "B277FF", "D1B1FF","6B23CC", "541A99", "3E1273", "7627CC", "5A1E99"] ;
-    const studentColor = ["1F6FCC", "175599", "103D73", "277ACC", "1B5A99","5DB2FF", "85C6FF", "ADD9FF", "75BCFF", "A5D6FF"] ;
+
+    const adminColor = ["F0E4FA", "F8F1FD", "FCFAFE", "F4EFFB", "FBF8FE", "BFA2D9", "A484C3", "8A69AC", "CBB6E0", "A993C6"];
+    const staffColor = ["A855FF", "C080FF", "D9AAFF", "B277FF", "D1B1FF", "6B23CC", "541A99", "3E1273", "7627CC", "5A1E99"];
+    const studentColor = ["1F6FCC", "175599", "103D73", "277ACC", "1B5A99", "5DB2FF", "85C6FF", "ADD9FF", "75BCFF", "A5D6FF"];
+    
     let randomAdminColor = adminColor[Math.floor(Math.random() * adminColor.length)];
     let randomStaffColor2 = staffColor[Math.floor(Math.random() * staffColor.length)];
     let randomStudentColor3 = studentColor[Math.floor(Math.random() * studentColor.length)];
+
     const fontColor = (color) => {
       const lightShades = [
         "A855FF", "C080FF", "D9AAFF", "B277FF", "D1B1FF",
         "F0E4FA", "F8F1FD", "FCFAFE", "F4EFFB", "FBF8FE",
         "5DB2FF", "85C6FF", "ADD9FF", "75BCFF", "A5D6FF"
       ];
-    
       return lightShades.includes(color) ? "#000" : "#FFF";
     };
-    
-    
 
     const adminProfilePic = `https://avatar.iran.liara.run/username?username=${firstName}+${lastName}&background=${randomAdminColor}&color=${fontColor(randomAdminColor)}`;
-   const staffProfilePic = `https://avatar.iran.liara.run/username?username=${firstName}+${lastName}&background=${randomStaffColor2}&color=${fontColor(randomAdminColor)}`;
+    const staffProfilePic = `https://avatar.iran.liara.run/username?username=${firstName}+${lastName}&background=${randomStaffColor2}&color=${fontColor(randomAdminColor)}`;
     const studentProfilePic = `https://avatar.iran.liara.run/username?username=${firstName}+${lastName}&background=${randomStudentColor3}&color=${fontColor(randomAdminColor)}`; 
+    
     const now = new Date();
     now.setHours(now.getHours() + 1);
     const year = now.getFullYear();
@@ -82,6 +80,7 @@ const signup = async (req, res) => {
     const minutes = now.getMinutes().toString().padStart(2, "0");
     const seconds = now.getSeconds().toString().padStart(2, "0");
     const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
     const newUser = new User({
       fullName,
       email,
@@ -90,13 +89,10 @@ const signup = async (req, res) => {
       member,
       profilePicture: member === "admin" ? adminProfilePic : member === "staff" ? staffProfilePic : studentProfilePic,
     });
+
     if (newUser) {
       await newUser.save();
-
-      // Generate JWT token here
-
       generateToken(newUser._id, res);
-
       res.status(201).json({
         _id: newUser._id,
         fullName: newUser.fullName,
@@ -114,20 +110,15 @@ const signup = async (req, res) => {
     res.status(500).json({ error: "internal server error" });
   }
 };
+
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      user?.password || ""
-    );
+    const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
     if (!user) {
       return res.status(400).json({ message: "user does not exist" });
     }
-    //    if(!isPasswordCorrect){
-    //     return res.status(400).json({message:'incorrect password'})
-    //    }
     generateToken(user._id, res);
     res.status(200).json({
       _id: user._id,
@@ -142,6 +133,7 @@ const login = async (req, res) => {
     res.status(500).json({ error: "internal server error" });
   }
 };
+
 const logout = async (req, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 0 });
@@ -152,4 +144,4 @@ const logout = async (req, res) => {
   }
 };
 
-module.exports = { signup, login, logout };
+export { signup, login, logout };

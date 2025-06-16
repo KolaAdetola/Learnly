@@ -1,28 +1,31 @@
-const express=require('express')
-const port=2500
-const app=express()
-const authRoute=require('./routes/auth.routes')
-const messageRoute=require('./routes/message.routes')
-const userRoutes=require('./routes/user.routes')
-const examRoutes=require('./routes/exam.routes')
-const connectdb=require('../Backend/db/db')
-const cookieParser=require('cookie-parser')
-connectdb()
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import authRoute from './routes/auth.routes.js';
+import messageRoute from './routes/message.routes.js';
+import userRoutes from './routes/user.routes.js';
+import examRoutes from './routes/exam.routes.js';
+import connectdb from './db/db.js'; // Adjusted path for ESM context
 
-app.use(express.json())
-app.use(cookieParser())
-app.get('/',(req,res)=>{
-    // root route
-    res.send('<h1>hello world</h1>')
-})
-app.use ('/api/auth',authRoute)
-app.use ('/api/messages',messageRoute)
-app.use ('/api/users',userRoutes)
-app.use ('/api/exams',examRoutes)
+const app = express();
+const port = 2500;
 
+// Connect to database
+connectdb();
 
+// Middleware
+app.use(express.json());
+app.use(cookieParser());
 
+// Routes
+app.get('/', (req, res) => {
+  res.send('<h1>hello world</h1>');
+});
+app.use('/api/auth', authRoute);
+app.use('/api/messages', messageRoute);
+app.use('/api/users', userRoutes);
+app.use('/api/exams', examRoutes);
 
-app.listen(port,()=>{
-    console.log(`server is running http://localhost:${port}`)
-})
+// Start server
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});

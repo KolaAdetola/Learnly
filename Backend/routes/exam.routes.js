@@ -1,12 +1,11 @@
-const express = require('express');
-const app = express();
-const { createExam, getExams, updateExam } = require('../controllers/exam.controller');
-const protectRoute = require('../middleware/protectRoute');
+import express from 'express';
+import { createExam, getExams, updateExam } from '../controllers/exam.controller.js';
+import protectRoute from '../middleware/protectRoute.js';
 
 const router = express.Router();
 
-router.post('/create-exam', createExam);
-router.get('/get-exams/:examcode', getExams);
-router.put('/update-exam/:examcode', updateExam);
+router.post('/create-exam', protectRoute, createExam);
+router.get('/get-exams/:examcode', protectRoute, getExams);
+router.put('/update-exam/:examcode', protectRoute, updateExam);
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const User = require("../models/user.model.js");
+import User from "../models/user.model.js";
 
 const getUsersForSidebar = async (req, res) => {
 	try {
@@ -13,4 +13,4 @@ const getUsersForSidebar = async (req, res) => {
 	}
 };
 
-module.exports = { getUsersForSidebar };
+export { getUsersForSidebar };
