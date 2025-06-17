@@ -37,7 +37,7 @@ const Layout = () => {
           <Route path="/exam/:examCode" element={authUser ? <StudentExam /> : <Navigate to="/login" />} />
 
           {/* Pre-Exams Route: Protect this route */}
-          <Route path="/pre-exams" element={ <PreExams /> } />
+          <Route path="/pre-exams" element={authUser ?  <PreExams /> : <Navigate to="/login"/> } />
 
           <Route path="/exam" element={authUser ? <Exam /> : <Navigate to="/login" />} />
 
