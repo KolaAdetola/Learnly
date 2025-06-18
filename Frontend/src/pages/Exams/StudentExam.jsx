@@ -112,6 +112,13 @@ const StudentExam = () => {
       <div className="flex flex-col items-center justify-center min-h-screen bg-white p-6">
         <h2 className="text-2xl font-bold mb-4">Exam Submitted! ✅</h2>
         <p className="text-gray-700">Here are your answers:</p>
+        <p className="text-sm text-gray-500 mt-2">
+          you got {Object.values(answers).filter((answer, index) => {
+            return (
+              answer === exam.examQuestions[index].correctAnswer
+            );
+          }).length} out of {totalQuestions} questions correct.
+        </p>
         <ul className="mt-4 w-full max-w-lg text-left">
           {exam.examQuestions.map((q, index) => {
             const userAnswer = answers[index]; // User's selected answer
