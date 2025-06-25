@@ -62,12 +62,14 @@ const createExam = async (req, res) => {
 // Get Exam by Exam Code
 const getExams = async (req, res) => {
   try {
-    const exam = await Exam.findOne({ examCode: req.params.examCode });
+    const exam = await Exam.findOne({ examCode: req.params.examcode });
     if (!exam) return res.status(404).json({ message: 'Exam not found' });
-
+    console.log('Exam found:', exam.examName);
     res.json(exam);
   } catch (error) {
     res.status(500).json({ error: error.message });
+    console.log('Error fetching exam:', error.message);
+    
   }
 }
 
