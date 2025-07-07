@@ -1,4 +1,5 @@
 import path from 'path';
+import cors from 'cors';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import authRoute from './routes/auth.routes.js';
@@ -16,6 +17,7 @@ const __dirname = path.resolve();
 connectdb();
 
 // Middleware
+app.use(cors("*"));
 app.use(express.json());
 app.use(cookieParser());
 

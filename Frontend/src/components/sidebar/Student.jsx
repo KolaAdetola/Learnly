@@ -23,7 +23,7 @@ const Student = ({ conversation, lastIndex }) => {
         <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-[50px] rounded-full">
             <img src={conversation.profilePicture} alt={`${conversation.fullName}'s profile`} />
-          </div>
+          </div> 
         </div>
         <div className="flex flex-col flex-1">
           <div className="hover:bg-purple-300 flex gap-1 justify-between flex-col">
