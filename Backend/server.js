@@ -17,10 +17,23 @@ const __dirname = path.resolve();
 connectdb();
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://learnly-five.vercel.app' // ✅ No trailing slash
+];
+
 app.use(cors({
-  origin: ["http://localhost:3000/",'*'], // Adjust this to your frontend URL
-  credentials: true, // Allow cookies to be sent
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 
