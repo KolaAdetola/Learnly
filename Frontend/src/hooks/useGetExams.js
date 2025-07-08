@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { api_url } from "../utils/constants";
 
 const useGetExam = (examCode) => {
   const [exam, setExam] = useState(null);
@@ -15,7 +16,7 @@ const useGetExam = (examCode) => {
       setExam(null); // Reset state before fetching
 
       try {
-        const response = await axios.get(`/api/exams/get-exams/${examCode}`);
+        const response = await axios.get(`${api_url}api/exams/get-exams/${examCode}`);
         console.log(response.data);
          // Fetch specific exam
         setExam(response.data);

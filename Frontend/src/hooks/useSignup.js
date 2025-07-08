@@ -2,6 +2,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useAuthContext } from "../context/AuthContext";
+import { api_url } from "../utils/constants";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ const useSignup = () => {
     setLoading(true);
     
     try {
-      const res = await axios.post(`/api/auth/signup`, {
+      const res = await axios.post(`${api_url}api/auth/signup`, {
         fullName,
         email,
         password,
