@@ -18,7 +18,7 @@ connectdb();
 
 // Middleware
 app.use(cors({
-  origin: '*', // Adjust this to your frontend URL
+  origin: ["http://localhost:3000/",'*'], // Adjust this to your frontend URL
   credentials: true, // Allow cookies to be sent
 }));
 app.use(express.json());
