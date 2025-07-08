@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import useConversation from "../zustand/useConversation"
-import { api_url } from "../utils/constants";
 
 const useGetMessage = () => {
   const [loading,setLoading]=useState(false)
@@ -11,7 +10,7 @@ const useGetMessage = () => {
     const getMessages = async () =>{
       setLoading(true)
       try {
-        const res = await fetch(`${api_url}api/messages/${selectedConversation._id}`)
+        const res = await fetch(`/api/messages/${selectedConversation._id}`)
         const data = await res.json()
         if(!res.ok){
           throw new Error(data.message)

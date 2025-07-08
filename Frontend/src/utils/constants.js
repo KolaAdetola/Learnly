@@ -1,1 +1,0 @@
-export const api_url= "https://learnly-fvcx.onrender.com/"
