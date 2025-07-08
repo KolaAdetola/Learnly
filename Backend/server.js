@@ -17,7 +17,10 @@ const __dirname = path.resolve();
 connectdb();
 
 // Middleware
-app.use(cors("*"));
+app.use(cors({
+  origin: '*', // Adjust this to your frontend URL
+  credentials: true, // Allow cookies to be sent
+}));
 app.use(express.json());
 app.use(cookieParser());
 
