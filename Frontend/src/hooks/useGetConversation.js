@@ -3,31 +3,36 @@ import { toast } from "react-hot-toast";
 import { api_url } from "../utils/constants";
 
 const useGetConversations = () => {
-    const [loading, setLoading] = useState(false);
-    const [conversations, setConversations] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [conversations, setConversations] = useState([]);
 
-    useEffect(() => {
-        const getConversations = async () => {
-            setLoading(true);
-            try {
-                const res = await fetch(`${api_url}api/users`, {
-                    credentials: 'include' // ✅ include cookies for auth
-                });
+  useEffect(() => {
+    const getConversations = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`${api_url}api/auth/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // 🔥 MUST include this
+        //   body: JSON.stringify({ email, password }),
+        });
 
-                if (!res.ok) throw new Error('Failed to fetch conversations');
+        if (!res.ok) throw new Error("Failed to fetch conversations");
 
-                const data = await res.json();
-                setConversations(data);
-            } catch (error) {
-                toast.error(error.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-        getConversations();
-    }, []);
+        const data = await res.json();
+        setConversations(data);
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getConversations();
+  }, []);
 
-    return { loading, conversations };
+  return { loading, conversations };
 };
 
 export default useGetConversations;
