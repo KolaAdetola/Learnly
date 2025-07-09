@@ -8,7 +8,7 @@ const useLogin = () => {
     const { setAuthUser } = useAuthContext();
 
     const login = async (email, password) => {
-        setLoading(true);
+        setLoading(true); // Set loading to true at the start
 
         try {
             const res = await fetch(`${api_url}api/auth/login`, {
@@ -16,10 +16,9 @@ const useLogin = () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                credentials: 'include', // ✅ This is the critical fix!
                 body: JSON.stringify({ email, password })
             });
-
+            
             const data = await res.json();
 
             if (res.ok) {
@@ -30,7 +29,7 @@ const useLogin = () => {
                 toast.error(data.error);
             }
         } catch (error) {
-            toast.error("Login failed. Please try again.",error);
+            toast.error("Login failed. Please try again.");
         } finally {
             setLoading(false);
         }
