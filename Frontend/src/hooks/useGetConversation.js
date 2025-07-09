@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import useConversation from "../zustand/useConversation";
 import { toast } from "react-hot-toast";
 import { api_url } from "../utils/constants";
 
@@ -11,9 +10,12 @@ const useGetConversations = () => {
         const getConversations = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`${api_url}api/users`);
+                const res = await fetch(`${api_url}api/users`, {
+                    credentials: 'include' // ✅ include cookies for auth
+                });
+
                 if (!res.ok) throw new Error('Failed to fetch conversations');
-                
+
                 const data = await res.json();
                 setConversations(data);
             } catch (error) {

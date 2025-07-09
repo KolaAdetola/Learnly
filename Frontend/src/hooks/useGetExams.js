@@ -16,12 +16,17 @@ const useGetExam = (examCode) => {
       setExam(null); // Reset state before fetching
 
       try {
-        const response = await axios.get(`${api_url}api/exams/get-exams/${examCode}`);
+        const response = await axios.get(`${api_url}api/exams/get-exams/${examCode}`,{
+          withCredentials: true, // Include cookies for authentication
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
         console.log(response.data);
          // Fetch specific exam
         setExam(response.data);
-      } catch (err) {
-        setError("Exam not found. Please check the exam code.");
+      } catch (error) {
+        setError("Exam not found. Please check the exam code.", error.message);
       } finally {
         setLoading(false);
       }
